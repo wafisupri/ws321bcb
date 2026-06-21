@@ -2,21 +2,21 @@
 
 ## 📌 Overview
 
-IDBadge is a digital access card system designed for employee onboarding and off-boarding processes within BFI (Brunei Fertilizer Industries).
-It centralizes identity card generation, validation, and visualization into a unified digital workflow.
+IDBadge is a digital BFI Access Card system designed for employee onboarding & off-boarding processes within BFI (Brunei Fertilizer Industries).
+It centralizes identity card generation, validation & visualization into a unified digital workflow.
 
-The project includes multiple AI-assisted versions and design iterations, generated using different tools and frameworks for comparison and experimentation.
+The project includes multiple AI-assisted versions & design iterations, generated using different tools & frameworks for comparison & experimentation.
 
 ---
 
 ## 🧩 Features
 
-* 🪪 Digital Access Card layout (front & back design)
+* 🪪 Digital BFI Access Card layout (front & back design)
 * 🏢 Supports onboarding & offboarding workflow concepts
 * 🤖 Multi-AI generated UI variations (ChatGPT, Copilot, Gemini, DeepSeek, etc.)
 * 📄 PDF + image-based card assets
 * ⚛️ React-based experimental UI (inside Kimi OKComputer app)
-* 🎨 Responsive and modern card design structure
+* 🎨 Responsive & modern card design structure
 
 ---
 
@@ -101,13 +101,12 @@ This project is part of an experimental workflow exploring:
 
 ## 👤 Author
 
-Wafi Supri
-Security Systems Administrator
-Brunei Darussalam
+ws321bcb
+Negara Brunei Darussalam
 
 ---
 
 ## 📌 Notes
 
-* This project is experimental and includes multiple AI-generated outputs.
-* Designed for testing UI consistency and automation ideas.
+* This project is experimental & includes multiple AI-generated outputs.
+* Designed for testing UI consistency & automation ideas.
