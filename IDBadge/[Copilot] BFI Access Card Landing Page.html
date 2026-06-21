@@ -1,0 +1,158 @@
+HTML for Work Website 01
+
+
+
+Copilot
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BFI Access Card Portal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #ffffff;
+      color: #333333;
+    }
+    header {
+      background-color: #004080; /* corporate blue from logo */
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .card-container {
+      perspective: 1000px;
+      width: 300px;
+      margin: 40px auto;
+    }
+    .card {
+      width: 100%;
+      transform-style: preserve-3d;
+      transition: transform 1s;
+    }
+    .card:hover {
+      transform: rotateY(180deg);
+    }
+    .card img {
+      width: 100%;
+      backface-visibility: hidden;
+      border: 1px solid #ccc;
+    }
+    .card .back {
+      transform: rotateY(180deg);
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .tabs {
+      display: flex;
+      justify-content: center;
+      background-color: #f0f0f0;
+    }
+    .tabs button {
+      background: none;
+      border: none;
+      padding: 14px 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .tabs button.active {
+      border-bottom: 3px solid #004080;
+      color: #004080;
+    }
+    .tab-content {
+      display: none;
+      padding: 20px;
+      max-width: 800px;
+      margin: auto;
+    }
+    .tab-content.active {
+      display: block;
+    }
+    footer {
+      background-color: #004080;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      margin-top: 40px;
+    }
+    a.download {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: #004080;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Brunei Fertilizer Industries</h1>
+    <h2>Employee Access Card Portal</h2>
+  </header>
+
+  <!-- Rotating Product -->
+  <div class="card-container">
+    <div class="card">
+      <img src="page1.png" alt="BFI Access Card Front">
+      <img src="page3.png" class="back" alt="BFI Access Card Back">
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tablink active" onclick="openTab(event,'overview')">Overview</button>
+    <button class="tablink" onclick="openTab(event,'raci')">RACI Summary</button>
+    <button class="tablink" onclick="openTab(event,'list')">Downloadable Forms</button>
+  </div>
+
+  <!-- Tab Contents -->
+  <div id="overview" class="tab-content active">
+    <h3>Overview</h3>
+    <p>The onboarding and offboarding process at BFI involves multiple departments including HR, IT, Security, HSSE, and Administration. Each plays a critical role in ensuring smooth employee transitions.</p>
+  </div>
+
+  <div id="raci" class="tab-content">
+    <h3>RACI Summary</h3>
+    <p><strong>Responsible:</strong> HR & Security<br>
+       <strong>Accountable:</strong> HSSE Department<br>
+       <strong>Consulted:</strong> IT & Administration<br>
+       <strong>Informed:</strong> All relevant stakeholders</p>
+  </div>
+
+  <div id="list" class="tab-content">
+    <h3>Downloadable Forms</h3>
+    <p>Access the required forms for onboarding and offboarding:</p>
+    <a href="onboarding_form.pdf" class="download">Onboarding Form</a>
+    <a href="offboarding_form.pdf" class="download">Offboarding Form</a>
+  </div>
+
+  <footer>
+    <p>Done by: Security Team, OSS Section, HSSE Department</p>
+  </footer>
+
+  <script>
+    function openTab(evt, tabName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tab-content");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].classList.remove("active");
+      }
+      tablinks = document.getElementsByClassName("tablink");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].classList.remove("active");
+      }
+      document.getElementById(tabName).classList.add("active");
+      evt.currentTarget.classList.add("active");
+    }
+  </script>
+</body>
+</html>
+
+
+
+#BFI #AI

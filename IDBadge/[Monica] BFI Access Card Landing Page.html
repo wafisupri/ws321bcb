@@ -1,0 +1,126 @@
+HTML for Work Website 07
+
+
+
+Monica
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BFI Access Card</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #003366; /* Example color from logo */
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .tab {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background: #0073e6; /* Example color from logo */
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .tab-content {
+            display: none;
+            margin: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .active {
+            display: block;
+        }
+        .footer {
+            background-color: #003366; /* Example color from logo */
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+        .product-image {
+            width: 300px;
+            height: auto;
+            animation: rotate 10s infinite linear;
+        }
+        @keyframes rotate {
+            from { transform: rotateY(0deg); }
+            to { transform: rotateY(360deg); }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>BFI Access Card</h1>
+</header>
+
+<div class="product-image-container" style="text-align:center;">
+    <img src="path/to/front-image.jpg" alt="BFI Access Card Front" class="product-image" id="frontImage">
+</div>
+
+<div class="tabs">
+    <div class="tab" onclick="showTab('overview')">Overview</div>
+    <div class="tab" onclick="showTab('raci')">RACI Summary</div>
+    <div class="tab" onclick="showTab('download')">Download Form</div>
+</div>
+
+<div id="overview" class="tab-content active">
+    <h2>Overview</h2>
+    <p>The BFI Access Card is essential for employees at Brunei Fertilizer Industries. It serves as identification and access to various facilities.</p>
+</div>
+
+<div id="raci" class="tab-content">
+    <h2>RACI Summary</h2>
+    <p>RACI (Responsible, Accountable, Consulted, Informed) summary for departments involved in onboarding and offboarding:</p>
+    <ul>
+        <li><strong>HR:</strong> Responsible for onboarding processes.</li>
+        <li><strong>IT:</strong> Responsible for access permissions.</li>
+        <li><strong>Security:</strong> Accountable for card issuance.</li>
+        <li><strong>Management:</strong> Consulted during offboarding.</li>
+    </ul>
+</div>
+
+<div id="download" class="tab-content">
+    <h2>Download Form</h2>
+    <p>Please download the form below for onboarding and offboarding:</p>
+    <a href="path/to/form.pdf" download>Download Form</a>
+</div>
+
+<div class="footer">
+    <p>Done by: Security Team, OSS Section, HSSE Department</p>
+</div>
+
+<script>
+    function showTab(tabId) {
+        const tabs = document.querySelectorAll('.tab-content');
+        tabs.forEach(tab => {
+            tab.classList.remove('active');
+        });
+        document.getElementById(tabId).classList.add('active');
+    }
+</script>
+
+</body>
+</html>
+
+
+#BFI #AI
