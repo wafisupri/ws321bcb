@@ -1189,7 +1189,42 @@ SECTION TITLES
 /* =========================================================
 OVERVIEW CARDS
 ========================================================= */
+.card {
+  perspective: 1200px;
+  width: 100%;
+  height: 100%;
+}
 
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+
+  transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+/* Flip trigger */
+.card.is-flipped .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Faces */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+    
 .overview-card{
 
     background:#FFFFFF !important;
@@ -1486,6 +1521,19 @@ document.addEventListener('DOMContentLoaded', function(){
                 </div>
             </div>
 
+            <div id="card3d" class="card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <!-- FRONT CONTENT -->
+                    </div>
+
+                    <div class="card-back">
+                        <!-- BACK CONTENT -->
+                    </div>
+
+                </div>
+            </div>
+            
             <!-- 3D Card -->
             <div class="card-wrapper">
                 <div class="card-3d" id="card3d">
@@ -1932,40 +1980,17 @@ document.addEventListener('DOMContentLoaded', function(){
         (function() {
             'use strict';
 
-            // ---- 3D CARD ROTATION ON SCROLL ----
             const card = document.getElementById('card3d');
-            const hero = document.querySelector('.hero');
-            let ticking = false;
 
-            function updateCardRotation() {
-                const scrollY = window.scrollY;
-                const heroHeight = hero.offsetHeight;
-                // map scroll from 0..heroHeight to 0..180 deg
-                let progress = Math.min(scrollY / heroHeight, 1);
-                // ease in/out for a more natural feel
-                const eased = progress < 0.5 ?
-                    2 * progress * progress :
-                    1 - Math.pow(-2 * progress + 2, 2) / 2;
-                const angle = eased * 180;
-                card.style.transform = `rotateY(${angle}deg)`;
-            }
+                if (!card) return;
 
-            function onScroll() {
-                if (!ticking) {
-                    window.requestAnimationFrame(function() {
-                        updateCardRotation();
-                        ticking = false;
-                    });
-                    ticking = true;
-                }
-            }
-
-            window.addEventListener('scroll', onScroll, { passive: true });
-            window.addEventListener('resize', onScroll, { passive: true });
-
-            // initial call
-            setTimeout(updateCardRotation, 50);
-
+                // Toggle flip on click (desktop + mobile)
+                card.addEventListener('click', function () {
+                    card.classList.toggle('is-flipped');
+                });
+            
+            })();
+        
             // ---- TABS ----
             const tabBtns = document.querySelectorAll('.tab-btn');
             const panels = {
