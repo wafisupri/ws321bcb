@@ -154,19 +154,18 @@
             letter-spacing: 0.02em;
             backdrop-filter: blur(4px);
         }
-        /* ----- 3D CARD ----- */
+                /* ----- 3D CARD ----- */
         .card-wrapper {
             perspective: 1200px;
             width: 100%;
-            max-width: 260px; /* was 380px – narrower for vertical card */
+            max-width: 260px; /* vertical card */
             justify-self: center;
         }
         
         .card-3d {
             position: relative;
             width: 100%;
-            /* was: aspect-ratio: 1.618 / 1; (landscape) */
-            aspect-ratio: 1 / 1.618; /* portrait ratio: taller than wide */
+            aspect-ratio: 1 / 1.618; /* portrait ratio */
             transform-style: preserve-3d;
             transition: transform 0.05s linear;
             will-change: transform;
@@ -186,20 +185,22 @@
         
         /* ---- FRONT FACE (Page 1) ---- */
         .card-front {
-            background: linear-gradient(145deg, #ffffff 0%, #f0f3fa 100%);
+            /* Use image instead of gradient */
+            background: #ffffff;
+            background-image: url("Page01-BFIAccessCard.jpg");  /* FRONT IMAGE */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        
             border: 1px solid rgba(255, 255, 255, 0.3);
-            /* was: padding: 28px 26px 22px; */
-            padding: 22px 18px 18px; /* tighter padding for portrait */
+            padding: 22px 18px 18px;
             transform: rotateY(0deg);
         }
         
+        /* optional: keep internal layout if you still overlay text on top of the image */
         .card-front .card-header {
-            /* was: row layout */
-            /* display: flex;
-               justify-content: space-between;
-               align-items: flex-start; */
             display: flex;
-            flex-direction: column; /* stack brand + badge vertically */
+            flex-direction: column;
             align-items: flex-start;
             gap: 8px;
             margin-bottom: 16px;
@@ -213,130 +214,34 @@
             gap: 10px;
         }
         
+        /* brand-icon no longer needed as a solid block; can be hidden or minimized */
         .card-front .brand-icon {
-            /* slightly larger but still compact */
-            width: 40px;
-            height: 40px;
-            background: var(--primary);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gold);
-            font-weight: 800;
-            font-size: 1.1rem;
-            letter-spacing: -0.02em;
-            flex-shrink: 0;
-        }
-        
-        .card-front .brand-text {
-            font-weight: 700;
-            font-size: 0.95rem;
-            color: var(--primary);
-            line-height: 1.2;
-            letter-spacing: -0.01em;
-        }
-        
-        .card-front .brand-text small {
-            display: block;
-            font-weight: 400;
-            font-size: 0.6rem;
-            color: var(--text-muted);
-            letter-spacing: 0.04em;
-        }
-        
-        .card-front .card-badge {
-            background: var(--gold);
-            color: var(--white);
-            font-size: 0.55rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            padding: 0.2rem 0.7rem;
-            border-radius: 4px;
-            letter-spacing: 0.06em;
-        }
-        
-        .card-front .card-body {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 14px;
-            padding: 8px 0;
-        }
-        
-        .card-front .field {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-        
-        .card-front .field-label {
-            font-size: 0.6rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--text-muted);
-        }
-        
-        .card-front .field-value {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--primary);
-            background: rgba(12, 29, 61, 0.04);
-            padding: 6px 12px;
-            border-radius: 6px;
-            border-left: 3px solid var(--gold);
-            min-height: 36px;
-            display: flex;
-            align-items: center;
-        }
-        
-        .card-front .field-value.placeholder {
-            color: var(--text-muted);
-            font-weight: 400;
-            font-size: 0.85rem;
-            opacity: 0.6;
-        }
-        
-        .card-front .card-footer-deco {
-            margin-top: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 12px;
-            border-top: 1px solid rgba(12, 29, 61, 0.06);
-        }
-        
-        .card-front .card-footer-deco .chip {
-            width: 32px;
-            height: 20px;
-            background: linear-gradient(135deg, #d4d4d4, #b8b8b8);
-            border-radius: 4px;
-            opacity: 0.5;
-        }
-        
-        .card-front .card-footer-deco .stripe {
-            height: 4px;
-            width: 60%;
-            background: linear-gradient(90deg, var(--gold), var(--gold-light));
-            border-radius: 2px;
-            opacity: 0.5;
+            width: 0;
+            height: 0;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
         }
         
         /* ---- BACK FACE (Page 3) ---- */
         .card-back {
-            background: linear-gradient(145deg, var(--primary) 0%, #0F2650 100%);
+            /* Use image instead of gradient */
+            background: #0F2650;
+            background-image: url("Page03-BFIAccessCard.jpg");  /* BACK IMAGE */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        
             border: 1px solid rgba(201, 168, 76, 0.2);
-            /* was: padding: 28px 26px 22px; */
-            padding: 22px 18px 18px; /* match front for portrait */
+            padding: 22px 18px 18px;
             transform: rotateY(180deg);
             color: var(--white);
         }
         
+        /* optional: keep overlay content on top of the image */
         .card-back .back-header {
             display: flex;
-            flex-direction: column; /* stack brand + text for portrait */
+            flex-direction: column;
             align-items: flex-start;
             gap: 8px;
             margin-bottom: 14px;
@@ -344,97 +249,13 @@
             border-bottom: 1px solid rgba(201, 168, 76, 0.25);
         }
         
+        /* hide the old back icon block as well */
         .card-back .back-header .brand-icon {
-            width: 36px;
-            height: 36px;
-            background: var(--gold);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--primary);
-            font-weight: 800;
-            font-size: 1rem;
-            flex-shrink: 0;
-        }
-        
-        .card-back .back-header h4 {
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            color: var(--gold-light);
-        }
-        
-        .card-back .back-header h4 small {
-            display: block;
-            font-weight: 400;
-            font-size: 0.6rem;
-            color: rgba(255, 255, 255, 0.5);
-            letter-spacing: 0.04em;
-        }
-        
-        .card-back .property-text {
-            font-size: 0.7rem;
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.75);
-            line-height: 1.5;
-            margin-bottom: 14px;
-            padding: 10px 12px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            border-left: 3px solid var(--gold);
-        }
-        
-        .card-back .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6px 12px;
-            margin-bottom: 14px;
-        }
-        
-        .card-back .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.6rem;
-            color: rgba(255, 255, 255, 0.8);
-            padding: 4px 0;
-        }
-        
-        .card-back .contact-item i {
-            width: 18px;
-            color: var(--gold);
-            font-size: 0.65rem;
-            text-align: center;
-            flex-shrink: 0;
-        }
-        
-        .card-back .contact-item .label {
-            font-weight: 400;
-            color: rgba(255, 255, 255, 0.5);
-            margin-right: 2px;
-        }
-        
-        .card-back .contact-item .number {
-            font-weight: 500;
-            font-size: 0.65rem;
-            letter-spacing: 0.02em;
-        }
-        
-        .card-back .address {
-            font-size: 0.55rem;
-            color: rgba(255, 255, 255, 0.5);
-            line-height: 1.6;
-            padding-top: 10px;
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
-            font-style: normal;
-            letter-spacing: 0.02em;
-        }
-        
-        .card-back .address i {
-            color: var(--gold);
-            margin-right: 6px;
-            font-size: 0.6rem;
+            width: 0;
+            height: 0;
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
         }
         /* scroll hint */
         .scroll-hint {
