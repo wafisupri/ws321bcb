@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
@@ -179,83 +178,36 @@
             -webkit-backface-visibility: hidden;
             overflow: hidden;
             box-shadow: var(--shadow);
-            display: flex;
-            flex-direction: column;
+        
+            /* IMPORTANT: no inner layout, just let the background show */
+            display: block;
+            padding: 0;
         }
         
         /* ---- FRONT FACE (Page 1) ---- */
         .card-front {
-            /* Use image instead of gradient */
             background: #ffffff;
             background-image: url("Page01-BFIAccessCard.jpg");  /* FRONT IMAGE */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-        
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 22px 18px 18px;
             transform: rotateY(0deg);
-        }
-        
-        /* optional: keep internal layout if you still overlay text on top of the image */
-        .card-front .card-header {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 8px;
-            margin-bottom: 16px;
-            border-bottom: 2px solid var(--gold);
-            padding-bottom: 12px;
-        }
-        
-        .card-front .brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        /* brand-icon no longer needed as a solid block; can be hidden or minimized */
-        .card-front .brand-icon {
-            width: 0;
-            height: 0;
-            padding: 0;
-            margin: 0;
-            overflow: hidden;
         }
         
         /* ---- BACK FACE (Page 3) ---- */
         .card-back {
-            /* Use image instead of gradient */
             background: #0F2650;
             background-image: url("Page03-BFIAccessCard.jpg");  /* BACK IMAGE */
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
-        
-            border: 1px solid rgba(201, 168, 76, 0.2);
-            padding: 22px 18px 18px;
             transform: rotateY(180deg);
-            color: var(--white);
         }
         
-        /* optional: keep overlay content on top of the image */
-        .card-back .back-header {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 8px;
-            margin-bottom: 14px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid rgba(201, 168, 76, 0.25);
-        }
-        
-        /* hide the old back icon block as well */
-        .card-back .back-header .brand-icon {
-            width: 0;
-            height: 0;
-            padding: 0;
-            margin: 0;
-            overflow: hidden;
+        /* HIDE ALL EXISTING OVERLAY CONTENT ON BOTH SIDES */
+        .card-front > *,
+        .card-back > * {
+            display: none !important;
         }
         /* scroll hint */
         .scroll-hint {
