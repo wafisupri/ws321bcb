@@ -1,15 +1,9 @@
-HTML for Work Website 03
-
-
-
-DeepSeek
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BFI Access Card – Onboarding &amp; Offboarding Portal</title>
+    <title>[DeepSeek] BFI Access Card – Onboarding &amp; Offboarding Portal</title>
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <!-- Google Fonts: Inter for clean corporate look -->
@@ -160,24 +154,24 @@ DeepSeek
             letter-spacing: 0.02em;
             backdrop-filter: blur(4px);
         }
-
         /* ----- 3D CARD ----- */
         .card-wrapper {
             perspective: 1200px;
             width: 100%;
-            max-width: 380px;
+            max-width: 260px; /* was 380px – narrower for vertical card */
             justify-self: center;
         }
-
+        
         .card-3d {
             position: relative;
             width: 100%;
-            aspect-ratio: 1.618 / 1;
+            /* was: aspect-ratio: 1.618 / 1; (landscape) */
+            aspect-ratio: 1 / 1.618; /* portrait ratio: taller than wide */
             transform-style: preserve-3d;
             transition: transform 0.05s linear;
             will-change: transform;
         }
-
+        
         .card-face {
             position: absolute;
             inset: 0;
@@ -189,31 +183,38 @@ DeepSeek
             display: flex;
             flex-direction: column;
         }
-
+        
         /* ---- FRONT FACE (Page 1) ---- */
         .card-front {
             background: linear-gradient(145deg, #ffffff 0%, #f0f3fa 100%);
             border: 1px solid rgba(255, 255, 255, 0.3);
-            padding: 28px 26px 22px;
+            /* was: padding: 28px 26px 22px; */
+            padding: 22px 18px 18px; /* tighter padding for portrait */
             transform: rotateY(0deg);
         }
-
+        
         .card-front .card-header {
+            /* was: row layout */
+            /* display: flex;
+               justify-content: space-between;
+               align-items: flex-start; */
             display: flex;
-            justify-content: space-between;
+            flex-direction: column; /* stack brand + badge vertically */
             align-items: flex-start;
+            gap: 8px;
             margin-bottom: 16px;
             border-bottom: 2px solid var(--gold);
             padding-bottom: 12px;
         }
-
+        
         .card-front .brand {
             display: flex;
             align-items: center;
             gap: 10px;
         }
-
+        
         .card-front .brand-icon {
+            /* slightly larger but still compact */
             width: 40px;
             height: 40px;
             background: var(--primary);
@@ -227,7 +228,7 @@ DeepSeek
             letter-spacing: -0.02em;
             flex-shrink: 0;
         }
-
+        
         .card-front .brand-text {
             font-weight: 700;
             font-size: 0.95rem;
@@ -235,7 +236,7 @@ DeepSeek
             line-height: 1.2;
             letter-spacing: -0.01em;
         }
-
+        
         .card-front .brand-text small {
             display: block;
             font-weight: 400;
@@ -243,7 +244,7 @@ DeepSeek
             color: var(--text-muted);
             letter-spacing: 0.04em;
         }
-
+        
         .card-front .card-badge {
             background: var(--gold);
             color: var(--white);
@@ -254,7 +255,7 @@ DeepSeek
             border-radius: 4px;
             letter-spacing: 0.06em;
         }
-
+        
         .card-front .card-body {
             flex: 1;
             display: flex;
@@ -263,13 +264,13 @@ DeepSeek
             gap: 14px;
             padding: 8px 0;
         }
-
+        
         .card-front .field {
             display: flex;
             flex-direction: column;
             gap: 2px;
         }
-
+        
         .card-front .field-label {
             font-size: 0.6rem;
             font-weight: 600;
@@ -277,7 +278,7 @@ DeepSeek
             letter-spacing: 0.08em;
             color: var(--text-muted);
         }
-
+        
         .card-front .field-value {
             font-size: 1.1rem;
             font-weight: 600;
@@ -290,14 +291,14 @@ DeepSeek
             display: flex;
             align-items: center;
         }
-
+        
         .card-front .field-value.placeholder {
             color: var(--text-muted);
             font-weight: 400;
             font-size: 0.85rem;
             opacity: 0.6;
         }
-
+        
         .card-front .card-footer-deco {
             margin-top: auto;
             display: flex;
@@ -306,7 +307,7 @@ DeepSeek
             padding-top: 12px;
             border-top: 1px solid rgba(12, 29, 61, 0.06);
         }
-
+        
         .card-front .card-footer-deco .chip {
             width: 32px;
             height: 20px;
@@ -314,7 +315,7 @@ DeepSeek
             border-radius: 4px;
             opacity: 0.5;
         }
-
+        
         .card-front .card-footer-deco .stripe {
             height: 4px;
             width: 60%;
@@ -322,25 +323,27 @@ DeepSeek
             border-radius: 2px;
             opacity: 0.5;
         }
-
+        
         /* ---- BACK FACE (Page 3) ---- */
         .card-back {
             background: linear-gradient(145deg, var(--primary) 0%, #0F2650 100%);
             border: 1px solid rgba(201, 168, 76, 0.2);
-            padding: 28px 26px 22px;
+            /* was: padding: 28px 26px 22px; */
+            padding: 22px 18px 18px; /* match front for portrait */
             transform: rotateY(180deg);
             color: var(--white);
         }
-
+        
         .card-back .back-header {
             display: flex;
-            align-items: center;
-            gap: 10px;
+            flex-direction: column; /* stack brand + text for portrait */
+            align-items: flex-start;
+            gap: 8px;
             margin-bottom: 14px;
             padding-bottom: 12px;
             border-bottom: 1px solid rgba(201, 168, 76, 0.25);
         }
-
+        
         .card-back .back-header .brand-icon {
             width: 36px;
             height: 36px;
@@ -354,14 +357,14 @@ DeepSeek
             font-size: 1rem;
             flex-shrink: 0;
         }
-
+        
         .card-back .back-header h4 {
             font-size: 0.85rem;
             font-weight: 600;
             letter-spacing: -0.01em;
             color: var(--gold-light);
         }
-
+        
         .card-back .back-header h4 small {
             display: block;
             font-weight: 400;
@@ -369,7 +372,7 @@ DeepSeek
             color: rgba(255, 255, 255, 0.5);
             letter-spacing: 0.04em;
         }
-
+        
         .card-back .property-text {
             font-size: 0.7rem;
             font-weight: 400;
@@ -381,14 +384,14 @@ DeepSeek
             border-radius: 8px;
             border-left: 3px solid var(--gold);
         }
-
+        
         .card-back .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 6px 12px;
             margin-bottom: 14px;
         }
-
+        
         .card-back .contact-item {
             display: flex;
             align-items: center;
@@ -397,7 +400,7 @@ DeepSeek
             color: rgba(255, 255, 255, 0.8);
             padding: 4px 0;
         }
-
+        
         .card-back .contact-item i {
             width: 18px;
             color: var(--gold);
@@ -405,19 +408,19 @@ DeepSeek
             text-align: center;
             flex-shrink: 0;
         }
-
+        
         .card-back .contact-item .label {
             font-weight: 400;
             color: rgba(255, 255, 255, 0.5);
             margin-right: 2px;
         }
-
+        
         .card-back .contact-item .number {
             font-weight: 500;
             font-size: 0.65rem;
             letter-spacing: 0.02em;
         }
-
+        
         .card-back .address {
             font-size: 0.55rem;
             color: rgba(255, 255, 255, 0.5);
@@ -427,13 +430,12 @@ DeepSeek
             font-style: normal;
             letter-spacing: 0.02em;
         }
-
+        
         .card-back .address i {
             color: var(--gold);
             margin-right: 6px;
             font-size: 0.6rem;
         }
-
         /* scroll hint */
         .scroll-hint {
             position: absolute;
