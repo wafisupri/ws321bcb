@@ -1,0 +1,1190 @@
+HTML for Work Website 04
+
+
+
+Qwen Studio
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BFI Access Card — Onboarding & Offboarding Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bfi-green-900: #0F3D1F;
+    --bfi-green-800: #14532D;
+    --bfi-green-700: #166534;
+    --bfi-green-600: #15803D;
+    --bfi-green-500: #22A55D;
+    --bfi-green-100: #DCFCE7;
+    --bfi-green-50: #F0FDF4;
+    --bfi-gold: #C8A951;
+    --bfi-gold-light: #E6D49C;
+    --bfi-dark: #0A1F13;
+    --bfi-gray-900: #111827;
+    --bfi-gray-700: #374151;
+    --bfi-gray-500: #6B7280;
+    --bfi-gray-300: #D1D5DB;
+    --bfi-gray-100: #F3F4F6;
+    --bfi-white: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bfi-white);
+    color: var(--bfi-gray-900);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(22,101,52,0.08);
+    transition: all 0.3s ease;
+  }
+  .nav-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--bfi-green-800);
+  }
+  .nav-logo {
+    width: 38px; height: 38px;
+    background: linear-gradient(135deg, var(--bfi-green-600), var(--bfi-green-800));
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 800;
+    font-size: 0.85rem;
+    box-shadow: 0 4px 12px rgba(21,128,61,0.25);
+  }
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--bfi-gray-700);
+    font-weight: 500;
+    font-size: 0.92rem;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--bfi-green-700); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    padding: 8rem 2rem 4rem;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(34,165,93,0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(200,169,81,0.06) 0%, transparent 50%),
+      linear-gradient(180deg, var(--bfi-green-50) 0%, var(--bfi-white) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(22,101,52,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(22,101,52,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  }
+  .hero-inner {
+    max-width: 1280px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-text .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--bfi-green-100);
+    color: var(--bfi-green-800);
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+  .hero-text .eyebrow::before {
+    content: '';
+    width: 8px; height: 8px;
+    background: var(--bfi-green-600);
+    border-radius: 50%;
+  }
+  .hero-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+    line-height: 1.1;
+    color: var(--bfi-green-900);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+  .hero-text h1 span {
+    color: var(--bfi-green-600);
+    position: relative;
+  }
+  .hero-text p {
+    font-size: 1.1rem;
+    color: var(--bfi-gray-700);
+    margin-bottom: 2rem;
+    max-width: 520px;
+  }
+  .hero-cta {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    padding: 0.9rem 1.75rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--bfi-green-700);
+    color: white;
+    box-shadow: 0 4px 14px rgba(22,101,52,0.3);
+  }
+  .btn-primary:hover {
+    background: var(--bfi-green-800);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(22,101,52,0.4);
+  }
+  .btn-ghost {
+    background: transparent;
+    color: var(--bfi-green-800);
+    border: 1.5px solid var(--bfi-green-700);
+  }
+  .btn-ghost:hover {
+    background: var(--bfi-green-50);
+  }
+
+  /* CARD 3D */
+  .card-stage {
+    perspective: 1600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 520px;
+    position: relative;
+  }
+  .card-stage::before {
+    content: '';
+    position: absolute;
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, rgba(34,165,93,0.25), transparent 70%);
+    filter: blur(40px);
+    z-index: 0;
+  }
+  .card-3d {
+    width: 380px;
+    height: 240px;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.1s linear;
+    z-index: 1;
+  }
+  .card-face {
+    position: absolute;
+    inset: 0;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 25px 60px -15px rgba(15,61,31,0.4), 0 10px 30px rgba(0,0,0,0.15);
+    background: white;
+  }
+  .card-face img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .card-back {
+    transform: rotateY(180deg);
+  }
+  .card-scroll-hint {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.78rem;
+    color: var(--bfi-gray-500);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .scroll-arrow {
+    width: 20px; height: 20px;
+    border-right: 1.5px solid var(--bfi-gray-500);
+    border-bottom: 1.5px solid var(--bfi-gray-500);
+    transform: rotate(45deg);
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: rotate(45deg) translate(0,0); }
+    50% { transform: rotate(45deg) translate(4px,4px); }
+  }
+
+  /* SECTION COMMON */
+  section { padding: 6rem 2rem; }
+  .container { max-width: 1280px; margin: 0 auto; }
+  .section-head {
+    text-align: center;
+    margin-bottom: 3.5rem;
+  }
+  .section-head .tag {
+    display: inline-block;
+    color: var(--bfi-green-700);
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .section-head h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    color: var(--bfi-green-900);
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .section-head p {
+    color: var(--bfi-gray-700);
+    max-width: 640px;
+    margin: 0 auto;
+    font-size: 1.05rem;
+  }
+
+  /* TABS */
+  .tabs-section {
+    background: var(--bfi-gray-100);
+    border-top: 1px solid rgba(22,101,52,0.08);
+    border-bottom: 1px solid rgba(22,101,52,0.08);
+  }
+  .tabs-nav {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+    background: white;
+    padding: 0.5rem;
+    border-radius: 12px;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 20px rgba(15,61,31,0.06);
+  }
+  .tab-btn {
+    padding: 0.85rem 1.75rem;
+    border: none;
+    background: transparent;
+    color: var(--bfi-gray-700);
+    font-weight: 600;
+    font-size: 0.92rem;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.25s ease;
+    font-family: inherit;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .tab-btn:hover { color: var(--bfi-green-700); }
+  .tab-btn.active {
+    background: var(--bfi-green-700);
+    color: white;
+    box-shadow: 0 4px 12px rgba(22,101,52,0.25);
+  }
+  .tab-btn .tab-icon {
+    font-size: 1.1rem;
+  }
+  .tab-panel {
+    display: none;
+    animation: fadeIn 0.4s ease;
+  }
+  .tab-panel.active { display: block; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* OVERVIEW TAB */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .overview-card {
+    background: white;
+    border-radius: 14px;
+    padding: 2rem;
+    border: 1px solid rgba(22,101,52,0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .overview-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--bfi-green-600), var(--bfi-gold));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+  }
+  .overview-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(15,61,31,0.1);
+    border-color: rgba(22,101,52,0.15);
+  }
+  .overview-card:hover::before { transform: scaleX(1); }
+  .overview-card .card-icon {
+    width: 52px; height: 52px;
+    background: var(--bfi-green-100);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+    color: var(--bfi-green-700);
+  }
+  .overview-card h3 {
+    color: var(--bfi-green-900);
+    font-size: 1.15rem;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
+  }
+  .overview-card p {
+    color: var(--bfi-gray-700);
+    font-size: 0.95rem;
+  }
+
+  .process-flow {
+    margin-top: 4rem;
+    background: white;
+    border-radius: 16px;
+    padding: 3rem;
+    border: 1px solid rgba(22,101,52,0.08);
+  }
+  .process-flow h3 {
+    font-family: 'Playfair Display', serif;
+    color: var(--bfi-green-900);
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+  .flow-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    position: relative;
+  }
+  .flow-step {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    position: relative;
+  }
+  .flow-step .step-num {
+    width: 48px; height: 48px;
+    background: linear-gradient(135deg, var(--bfi-green-600), var(--bfi-green-800));
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin: 0 auto 1rem;
+    box-shadow: 0 4px 14px rgba(22,101,52,0.3);
+  }
+  .flow-step h4 {
+    color: var(--bfi-green-900);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+  }
+  .flow-step p {
+    color: var(--bfi-gray-700);
+    font-size: 0.88rem;
+  }
+
+  /* RACI TAB */
+  .raci-wrap {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid rgba(22,101,52,0.08);
+    overflow-x: auto;
+    box-shadow: 0 4px 20px rgba(15,61,31,0.04);
+  }
+  .raci-legend {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--bfi-gray-100);
+  }
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+  .legend-badge {
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: white;
+  }
+  .legend-badge.R { background: var(--bfi-green-700); }
+  .legend-badge.A { background: var(--bfi-gold); color: var(--bfi-dark); }
+  .legend-badge.C { background: var(--bfi-gray-500); }
+  .legend-badge.I { background: var(--bfi-gray-300); color: var(--bfi-gray-900); }
+
+  .raci-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    min-width: 720px;
+  }
+  .raci-table thead th {
+    background: var(--bfi-green-900);
+    color: white;
+    padding: 0.9rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .raci-table thead th:first-child { border-radius: 8px 0 0 0; }
+  .raci-table thead th:last-child { border-radius: 0 8px 0 0; }
+  .raci-table tbody td {
+    padding: 0.85rem 1rem;
+    border-bottom: 1px solid var(--bfi-gray-100);
+    color: var(--bfi-gray-700);
+  }
+  .raci-table tbody tr:hover { background: var(--bfi-green-50); }
+  .raci-table tbody td:first-child {
+    font-weight: 600;
+    color: var(--bfi-green-900);
+  }
+  .raci-cell {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; height: 28px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: white;
+  }
+  .raci-cell.R { background: var(--bfi-green-700); }
+  .raci-cell.A { background: var(--bfi-gold); color: var(--bfi-dark); }
+  .raci-cell.C { background: var(--bfi-gray-500); }
+  .raci-cell.I { background: var(--bfi-gray-300); color: var(--bfi-gray-900); }
+  .raci-cell.empty { background: var(--bfi-gray-100); color: var(--bfi-gray-500); }
+
+  /* DOWNLOADS TAB */
+  .downloads-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.25rem;
+  }
+  .download-card {
+    background: white;
+    border-radius: 14px;
+    padding: 1.75rem;
+    border: 1px solid rgba(22,101,52,0.08);
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    transition: all 0.25s ease;
+    cursor: pointer;
+  }
+  .download-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(15,61,31,0.1);
+    border-color: var(--bfi-green-600);
+  }
+  .download-icon {
+    width: 52px; height: 52px;
+    background: var(--bfi-green-100);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.4rem;
+  }
+  .download-info { flex: 1; }
+  .download-info h4 {
+    color: var(--bfi-green-900);
+    font-size: 1.05rem;
+    margin-bottom: 0.35rem;
+    font-weight: 700;
+  }
+  .download-info p {
+    color: var(--bfi-gray-700);
+    font-size: 0.88rem;
+    margin-bottom: 0.75rem;
+  }
+  .download-meta {
+    display: flex;
+    gap: 1rem;
+    font-size: 0.78rem;
+    color: var(--bfi-gray-500);
+    font-weight: 500;
+  }
+  .download-btn {
+    background: var(--bfi-green-700);
+    color: white;
+    border: none;
+    padding: 0.55rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+    white-space: nowrap;
+  }
+  .download-btn:hover {
+    background: var(--bfi-green-800);
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--bfi-green-900);
+    color: white;
+    padding: 4rem 2rem 2rem;
+  }
+  .footer-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+  }
+  .footer-brand .nav-logo {
+    background: linear-gradient(135deg, var(--bfi-green-500), var(--bfi-green-700));
+  }
+  .footer-desc {
+    color: rgba(255,255,255,0.7);
+    font-size: 0.92rem;
+    max-width: 420px;
+    line-height: 1.7;
+  }
+  .footer-col h5 {
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+    color: var(--bfi-gold-light);
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col li {
+    color: rgba(255,255,255,0.75);
+    font-size: 0.9rem;
+    margin-bottom: 0.6rem;
+  }
+  .footer-bottom {
+    padding-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-credits {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .credit-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.8);
+  }
+  .credit-dot {
+    width: 6px; height: 6px;
+    background: var(--bfi-gold);
+    border-radius: 50%;
+  }
+  .footer-copy {
+    color: rgba(255,255,255,0.6);
+    font-size: 0.82rem;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero-inner { grid-template-columns: 1fr; text-align: center; }
+    .hero-text p { margin-left: auto; margin-right: auto; }
+    .hero-cta { justify-content: center; }
+    .card-stage { height: 400px; }
+    .footer-top { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+  @media (max-width: 600px) {
+    section { padding: 4rem 1.25rem; }
+    .hero { padding: 7rem 1.25rem 3rem; }
+    .card-3d { width: 320px; height: 200px; }
+    .process-flow { padding: 2rem 1.25rem; }
+    .raci-wrap { padding: 1.25rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">
+      <div class="nav-logo">BFI</div>
+      <span>Brunei Fertilizer Industries</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#raci">RACI</a></li>
+      <li><a href="#downloads">Downloads</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="eyebrow">Employee Access Management</div>
+      <h1>The <span>BFI Access Card</span> — Your Gateway to Secure Operations</h1>
+      <p>A unified reference for every department involved in the onboarding and offboarding of Brunei Fertilizer Industries employees. Streamlined, accountable, and compliant.</p>
+      <div class="hero-cta">
+        <a href="#overview" class="btn btn-primary">Explore Process →</a>
+        <a href="#downloads" class="btn btn-ghost">Download Forms</a>
+      </div>
+    </div>
+    <div class="card-stage">
+      <div class="card-3d" id="accessCard">
+        <div class="card-face card-front">
+          <img src="https://image.qwenlm.ai/public_source/5dafae6b-03ae-426b-878e-8b7d55f264fe/17007361b-ec4b-4f9e-b1b0-7ccbaed5f3d1.png" alt="BFI Access Card Front" />
+        </div>
+        <div class="card-face card-back">
+          <img src="https://image.qwenlm.ai/public_source/5dafae6b-03ae-426b-878e-8b7d55f264fe/1b9a8943f-dd05-485f-8d64-02ea7fbd053a.png" alt="BFI Access Card Back" />
+        </div>
+      </div>
+      <div class="card-scroll-hint">
+        <span>Scroll to rotate</span>
+        <div class="scroll-arrow"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TABS SECTION -->
+<section class="tabs-section" id="overview">
+  <div class="container">
+    <div class="section-head">
+      <div class="tag">Access Card Lifecycle</div>
+      <h2>Onboarding & Offboarding at a Glance</h2>
+      <p>Every department plays a critical role in issuing, managing, and reclaiming BFI Access Cards throughout the employee lifecycle.</p>
+    </div>
+
+    <div class="tabs-nav" role="tablist">
+      <button class="tab-btn active" data-tab="overview-tab">
+        <span class="tab-icon">📋</span> Overview
+      </button>
+      <button class="tab-btn" data-tab="raci-tab">
+        <span class="tab-icon">📊</span> RACI Summary
+      </button>
+      <button class="tab-btn" data-tab="downloads-tab">
+        <span class="tab-icon">📥</span> Downloads
+      </button>
+    </div>
+
+    <!-- OVERVIEW TAB -->
+    <div class="tab-panel active" id="overview-tab">
+      <div class="overview-grid">
+        <div class="overview-card">
+          <div class="card-icon">👥</div>
+          <h3>Human Resources</h3>
+          <p>Initiates the access card request upon employee confirmation. Provides personal details, SAP number, and employment status to OSS Section.</p>
+        </div>
+        <div class="overview-card">
+          <div class="card-icon">🔐</div>
+          <h3>Security Team — OSS Section</h3>
+          <p>Primary custodian of the access card process. Produces, activates, and collects cards. Manages access levels and maintains the card registry.</p>
+        </div>
+        <div class="overview-card">
+          <div class="card-icon">🛡️</div>
+          <h3>HSSE Department</h3>
+          <p>Ensures compliance with safety and security standards. Conducts mandatory safety induction before card activation for site access.</p>
+        </div>
+        <div class="overview-card">
+          <div class="card-icon">💻</div>
+          <h3>Information Technology</h3>
+          <p>Integrates card credentials with IT systems. Enables logical access to BFI networks, applications, and digital resources.</p>
+        </div>
+        <div class="overview-card">
+          <div class="card-icon">💰</div>
+          <h3>Finance Department</h3>
+          <p>Handles card-related deposits or charges. Verifies clearance of financial obligations before final offboarding sign-off.</p>
+        </div>
+        <div class="overview-card">
+          <div class="card-icon">🏢</div>
+          <h3>Administration</h3>
+          <p>Coordinates logistics for card collection and return. Manages employee records and supports inter-departmental communication.</p>
+        </div>
+      </div>
+
+      <div class="process-flow">
+        <h3>End-to-End Process Flow</h3>
+        <div class="flow-steps">
+          <div class="flow-step">
+            <div class="step-num">1</div>
+            <h4>HR Initiation</h4>
+            <p>Employee confirmed. HR submits access card request form with full details.</p>
+          </div>
+          <div class="flow-step">
+            <div class="step-num">2</div>
+            <h4>HSSE Induction</h4>
+            <p>Mandatory safety & security briefing completed before card issuance.</p>
+          </div>
+          <div class="flow-step">
+            <div class="step-num">3</div>
+            <h4>OSS Production</h4>
+            <p>Security Team produces, encodes, and activates the access card.</p>
+          </div>
+          <div class="flow-step">
+            <div class="step-num">4</div>
+            <h4>IT Integration</h4>
+            <p>Card linked to IT systems for network and application access.</p>
+          </div>
+          <div class="flow-step">
+            <div class="step-num">5</div>
+            <h4>Card Issuance</h4>
+            <p>Employee collects card from OSS Section upon clearance.</p>
+          </div>
+          <div class="flow-step">
+            <div class="step-num">6</div>
+            <h4>Offboarding Return</h4>
+            <p>Card deactivated and returned to OSS upon employee exit.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RACI TAB -->
+    <div class="tab-panel" id="raci-tab">
+      <div class="raci-wrap">
+        <div class="raci-legend">
+          <div class="legend-item"><div class="legend-badge R">R</div> Responsible</div>
+          <div class="legend-item"><div class="legend-badge A">A</div> Accountable</div>
+          <div class="legend-item"><div class="legend-badge C">C</div> Consulted</div>
+          <div class="legend-item"><div class="legend-badge I">I</div> Informed</div>
+        </div>
+        <table class="raci-table">
+          <thead>
+            <tr>
+              <th>Activity</th>
+              <th>HR</th>
+              <th>OSS / Security</th>
+              <th>HSSE</th>
+              <th>IT</th>
+              <th>Finance</th>
+              <th>Admin</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Submit Access Card Request</td>
+              <td><span class="raci-cell R">R</span></td>
+              <td><span class="raci-cell I">I</span></td>
+              <td><span class="raci-cell empty">—</span></td>
+              <td><span class="raci-cell empty">—</span></td>
+              <td><span class="raci-cell empty">—</span></td>
+              <td><span class="raci-cell I">I</span></td>
+            </tr>
+            <tr>
+              <td>Verify Employee Data</td>
+              <td><span class="raci-cell R">R</span></td>
+              <td><span class="raci-cell C">C</span></td>
+              <td><span class="raci-cell empty">—</span></td>
+              <td><span class="raci-cell empty">—</span></td>
+              <td><span class="raci-cell empty">—</span></td>
+              <td><span class="raci-cell C">C</span></td>
+            </tr>
+            <tr>
+              <td>Safety & Security Induction</td>
+              <td><span class="raci-cell I">I</span></td>
+              <td><span class="raci-cell C">C</span></td>
+              <td><span class="raci-cell R">R</span></td>
+              <td><span class="raci-cell empty">—</span></td>
+              <td><span class="raci-cell empty">—</span></td>
+              <td><span class="raci-cell I">I</span></td>
+            </tr>
+            <tr>
+              <td>Card Production & Encoding</td>
+              <td><span class="raci-cell empty">—</span></td>
+              <td><span class="raci-cell R">R</span></td>
+              <td><span class="raci-cell C">C</span></td>
+              <td><span class="raci-cell C">C</span></td>
+              <td><span class="raci-cell empty">—</span></td>
+              <td><span class="raci-cell I">I</span></td>
+            </tr>
+            <tr>
+              <td>Approve Access Level</td>
+              <td><span class="raci-cell C">C</span></td>
+              <td><span class="raci-cell A">A</span></td>
+              <td><span class="raci-cell C">C</span></td>
+              <td><span class="raci-cell C">C</span></td>
+              <td><span class="raci-cell empty">—</span></td>
+              <td><span class="raci-cell empty">—</span></td>
+            </tr>
+            <tr>
+              <td>IT System Integration</td>
+              <td><span class="raci-cell I">I</span></td>
+              <td><span class="raci-cell C">C</span></td>
+              <td><span class="raci-cell empty">—</span></td>
+              <td><span class="raci-cell R">R</span></td>
+              <td><span class="raci-cell empty">—</span></td>
+              <td><span class="raci-cell I">I</span></td>
+            </tr>
+            <tr>
+              <td>Card Issuance to Employee</td>
+              <td><span class="raci-cell I">I</span></td>
+              <td><span class="raci-cell R">R</span></td>
+              <td><span class="raci-cell empty">—</span></td>
+              <td><span class="raci-cell empty">—</span></td>
+              <td><span class="raci-cell empty">—</span></td>
+              <td><span class="raci-cell C">C</span></td>
+            </tr>
+            <tr>
+              <td>Offboarding Clearance — Finance</td>
+              <td><span class="raci-cell C">C</span></td>
+              <td><span class="raci-cell I">I</span></td>
+              <td><span class="raci-cell empty">—</span></td>
+              <td><span class="raci-cell empty">—</span></td>
+              <td><span class="raci-cell R">R</span></td>
+              <td><span class="raci-cell C">C</span></td>
+            </tr>
+            <tr>
+              <td>Card Deactivation & Collection</td>
+              <td><span class="raci-cell I">I</span></td>
+              <td><span class="raci-cell R">R</span></td>
+              <td><span class="raci-cell I">I</span></td>
+              <td><span class="raci-cell R">R</span></td>
+              <td><span class="raci-cell I">I</span></td>
+              <td><span class="raci-cell C">C</span></td>
+            </tr>
+            <tr>
+              <td>Final Offboarding Sign-off</td>
+              <td><span class="raci-cell A">A</span></td>
+              <td><span class="raci-cell R">R</span></td>
+              <td><span class="raci-cell C">C</span></td>
+              <td><span class="raci-cell C">C</span></td>
+              <td><span class="raci-cell C">C</span></td>
+              <td><span class="raci-cell R">R</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- DOWNLOADS TAB -->
+    <div class="tab-panel" id="downloads-tab">
+      <div class="downloads-grid">
+        <div class="download-card" onclick="handleDownload('Access Card Request Form')">
+          <div class="download-icon">📄</div>
+          <div class="download-info">
+            <h4>Access Card Request Form</h4>
+            <p>Standard form for HR to initiate new employee access card issuance.</p>
+            <div class="download-meta">
+              <span>PDF · 245 KB</span>
+              <span>Updated Jun 2025</span>
+            </div>
+          </div>
+          <button class="download-btn">Download</button>
+        </div>
+
+        <div class="download-card" onclick="handleDownload('Employee Offboarding Checklist')">
+          <div class="download-icon">✅</div>
+          <div class="download-info">
+            <h4>Employee Offboarding Checklist</h4>
+            <p>Comprehensive checklist covering all departments for employee exit clearance.</p>
+            <div class="download-meta">
+              <span>PDF · 312 KB</span>
+              <span>Updated Jun 2025</span>
+            </div>
+          </div>
+          <button class="download-btn">Download</button>
+        </div>
+
+        <div class="download-card" onclick="handleDownload('Access Card Return Form')">
+          <div class="download-icon">🔄</div>
+          <div class="download-info">
+            <h4>Access Card Return Form</h4>
+            <p>Formal acknowledgment for card return during offboarding process.</p>
+            <div class="download-meta">
+              <span>PDF · 180 KB</span>
+              <span>Updated Jun 2025</span>
+            </div>
+          </div>
+          <button class="download-btn">Download</button>
+        </div>
+
+        <div class="download-card" onclick="handleDownload('RACI Matrix — Access Management')">
+          <div class="download-icon"></div>
+          <div class="download-info">
+            <h4>RACI Matrix — Access Management</h4>
+            <p>Full RACI breakdown for all access card lifecycle activities.</p>
+            <div class="download-meta">
+              <span>XLSX · 128 KB</span>
+              <span>Updated Jun 2025</span>
+            </div>
+          </div>
+          <button class="download-btn">Download</button>
+        </div>
+
+        <div class="download-card" onclick="handleDownload('HSSE Safety Induction Form')">
+          <div class="download-icon">🛡️</div>
+          <div class="download-info">
+            <h4>HSSE Safety Induction Form</h4>
+            <p>Mandatory safety induction acknowledgment required before card activation.</p>
+            <div class="download-meta">
+              <span>PDF · 290 KB</span>
+              <span>Updated Jun 2025</span>
+            </div>
+          </div>
+          <button class="download-btn">Download</button>
+        </div>
+
+        <div class="download-card" onclick="handleDownload('Access Level Authorization Form')">
+          <div class="download-icon">🔑</div>
+          <div class="download-info">
+            <h4>Access Level Authorization Form</h4>
+            <p>Department head approval for employee access zone and system permissions.</p>
+            <div class="download-meta">
+              <span>PDF · 210 KB</span>
+              <span>Updated Jun 2025</span>
+            </div>
+          </div>
+          <button class="download-btn">Download</button>
+        </div>
+
+        <div class="download-card" onclick="handleDownload('Lost / Damaged Card Report')">
+          <div class="download-icon">⚠️</div>
+          <div class="download-info">
+            <h4>Lost / Damaged Card Report</h4>
+            <p>Incident report form for lost, stolen, or damaged access cards.</p>
+            <div class="download-meta">
+              <span>PDF · 165 KB</span>
+              <span>Updated Jun 2025</span>
+            </div>
+          </div>
+          <button class="download-btn">Download</button>
+        </div>
+
+        <div class="download-card" onclick="handleDownload('BFI Access Card Policy 2025')">
+          <div class="download-icon">📘</div>
+          <div class="download-info">
+            <h4>BFI Access Card Policy 2025</h4>
+            <p>Complete policy document governing access card issuance, usage, and return.</p>
+            <div class="download-meta">
+              <span>PDF · 1.2 MB</span>
+              <span>Updated Jun 2025</span>
+            </div>
+          </div>
+          <button class="download-btn">Download</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          <div class="nav-logo">BFI</div>
+          <span>Brunei Fertilizer Industries</span>
+        </div>
+        <p class="footer-desc">
+          Ground Floor, SPARK Centre, Sungai Liang Industrial Park, Simpang 787, Kg Sungai Liang, Belait KC1135, Brunei Darussalam.
+        </p>
+      </div>
+      <div class="footer-col">
+        <h5>Emergency Contacts</h5>
+        <ul>
+          <li>📞 +673 727 6993 (Security)</li>
+          <li>🏥 +673 737 5991 (Medic/Health)</li>
+          <li>🚒 +673 737 5995 (Fire & Rescue)</li>
+          <li>️ +673 737 4998 (Safety)</li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li>Overview</li>
+          <li>RACI Summary</li>
+          <li>Download Forms</li>
+          <li>BFI Security Section</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-credits">
+        <div class="credit-item"><div class="credit-dot"></div> Prepared by: Security Team</div>
+        <div class="credit-item"><div class="credit-dot"></div> OSS Section</div>
+        <div class="credit-item"><div class="credit-dot"></div> HSSE Department</div>
+      </div>
+      <div class="footer-copy">© 2025 Brunei Fertilizer Industries Sdn Bhd. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // TAB SWITCHING
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabBtns.forEach(b => b.classList.remove('active'));
+      tabPanels.forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById(btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // 3D CARD SCROLL ROTATION
+  const card = document.getElementById('accessCard');
+  const hero = document.querySelector('.hero');
+
+  function updateCardRotation() {
+    const scrollY = window.scrollY;
+    const heroHeight = hero.offsetHeight;
+    const progress = Math.min(scrollY / heroHeight, 1);
+    const rotateY = progress * 360;
+    const rotateX = Math.sin(progress * Math.PI) * 15;
+    card.style.transform = `rotateY(${rotateY}deg) rotateX(${rotateX}deg)`;
+  }
+
+  window.addEventListener('scroll', updateCardRotation, { passive: true });
+  updateCardRotation();
+
+  // DOWNLOAD HANDLER
+  function handleDownload(name) {
+    const blob = new Blob([`BFI Document: ${name}\n\nThis is a placeholder for the downloadable form: ${name}\n\nBrunei Fertilizer Industries Sdn Bhd.\nSecurity Team · OSS Section · HSSE Department`], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = name.replace(/\s+/g, '_') + '.txt';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+
+    const btn = event.currentTarget.querySelector('.download-btn');
+    const original = btn.textContent;
+    btn.textContent = '✓ Downloaded';
+    btn.style.background = '#14532D';
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.style.background = '';
+    }, 1800);
+  }
+
+  // SMOOTH NAV SCROLL
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
+
+
+
+#BFI #AI

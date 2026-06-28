@@ -1,0 +1,310 @@
+HTML for Work Website 09
+
+
+
+Le Mistral Vibe
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BFI Access Card - Employee Onboarding & Offboarding</title>
+    <style>
+        :root {
+            --bfi-blue: #003366;
+            --bfi-green: #2E8B57;
+            --bfi-gold: #FFD700;
+            --bfi-white: #FFFFFF;
+            --bfi-gray: #F5F5F5;
+            --bfi-dark: #2C3E50;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bfi-gray);
+            color: var(--bfi-dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--bfi-white);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .logo {
+            max-width: 200px;
+            margin: 0 auto;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: var(--bfi-blue);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .product-showcase {
+            text-align: center;
+            margin: 40px 0;
+            perspective: 1000px;
+        }
+        
+        .card-container {
+            display: inline-block;
+            width: 300px;
+            height: 450px;
+            position: relative;
+            transition: transform 1s;
+            transform-style: preserve-3d;
+        }
+        
+        .card {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            backface-visibility: hidden;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border: 2px solid var(--bfi-green);
+        }
+        
+        .card-front {
+            background-color: var(--bfi-white);
+        }
+        
+        .card-back {
+            background-color: var(--bfi-white);
+            color: var(--bfi-dark);
+            transform: rotateY(180deg);
+        }
+        
+        .card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            border-bottom: 1px solid var(--bfi-blue);
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            background-color: var(--bfi-white);
+            border: 1px solid var(--bfi-blue);
+            border-bottom: none;
+            margin: 0 5px;
+            border-radius: 5px 5px 0 0;
+            transition: background-color 0.3s;
+        }
+        
+        .tab:hover {
+            background-color: var(--bfi-gray);
+        }
+        
+        .tab.active {
+            background-color: var(--bfi-blue);
+            color: var(--bfi-white);
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 20px;
+            background-color: var(--bfi-white);
+            border-radius: 0 0 5px 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .download-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--bfi-blue);
+            color: var(--bfi-white);
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        
+        .download-btn:hover {
+            background-color: var(--bfi-dark);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--bfi-blue);
+            color: var(--bfi-white);
+            margin-top: 40px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        table, th, td {
+            border: 1px solid var(--bfi-blue);
+        }
+        
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: var(--bfi-blue);
+            color: var(--bfi-white);
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotateY(0deg); }
+            100% { transform: rotateY(360deg); }
+        }
+        
+        .card-container:hover {
+            animation: rotate 5s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://mistralaichatupprodswe.blob.core.windows.net/chat-images/0a/6d/82/0a6d82e0-28a6-472e-98f3-7229049bd3c9/61ae1673-cd8d-485d-9f2f-8bdd2b4e4bb9/4537cc1b-7a94-4a4a-a60a-f4f632ac7ddf?sv=2026-06-21T17%3A15%3A27Z&spr=https&se=2026-06-22T17%3A15%3A27Z&skoid=c9baccad-3639-4379-a088-07b7e349293c&sktid=4fbc1168-2984-4d17-af19-ac5138c2378e&skt=2026-06-21T16%3A15%3A27Z&ske=2026-06-22T17%3A15%3A27Z&sks=b&skv=2025-01-05&sr=b&sp=r&sig=JyyU%2FcacLHfex2kQ2lIsQTkZZu1NLQo1cUTuJvGb84Q%3D" alt="Brunei Fertilizer Industries Logo">
+        </div>
+    </header>
+    
+    <div class="container">
+        <h1>BFI Access Card</h1>
+        
+        <div class="product-showcase">
+            <div class="card-container">
+                <div class="card card-front">
+                    <img src="https://mistralaichatupprodswe.blob.core.windows.net/chat-images/0a/6d/82/0a6d82e0-28a6-472e-98f3-7229049bd3c9/61ae1673-cd8d-485d-9f2f-8bdd2b4e4bb9/e7113907-7208-41ac-803a-fe2d6d7e1795?sv=2026-06-21T17%3A15%3A27Z&spr=https&se=2026-06-22T17%3A15%3A27Z&skoid=c9baccad-3639-4379-a088-07b7e349293c&sktid=4fbc1168-2984-4d17-af19-ac5138c2378e&skt=2026-06-21T16%3A15%3A27Z&ske=2026-06-22T17%3A15%3A27Z&sks=b&skv=2025-01-05&sr=b&sp=r&sig=g4nkKQfMFnO%2BYa2ldrBjrE4YSoi8fzij0R8o6lpkxoY%3D" alt="BFI Access Card Front">
+                </div>
+                <div class="card card-back">
+                    <img src="https://mistralaichatupprodswe.blob.core.windows.net/chat-images/0a/6d/82/0a6d82e0-28a6-472e-98f3-7229049bd3c9/61ae1673-cd8d-485d-9f2f-8bdd2b4e4bb9/087096cc-5a95-4ff5-be3b-0a5c2183c48a?sv=2026-06-21T17%3A15%3A27Z&spr=https&se=2026-06-22T17%3A15%3A27Z&skoid=c9baccad-3639-4379-a088-07b7e349293c&sktid=4fbc1168-2984-4d17-af19-ac5138c2378e&skt=2026-06-21T16%3A15%3A27Z&ske=2026-06-22T17%3A15%3A27Z&sks=b&skv=2025-01-05&sr=b&sp=r&sig=Hx4dOeoJz2OGFXlolItn3idRh3HJ8xIA%2BI7lFz9lNcc%3D" alt="BFI Access Card Back">
+                </div>
+            </div>
+        </div>
+        
+        <div class="tabs">
+            <div class="tab active" onclick="openTab('overview')">Overview</div>
+            <div class="tab" onclick="openTab('raci')">RACI Summary</div>
+            <div class="tab" onclick="openTab('form')">Download Form</div>
+        </div>
+        
+        <div id="overview" class="tab-content active">
+            <h2>Overview</h2>
+            <p>
+                The <strong>BFI Access Card</strong> is a critical component for managing employee access during onboarding and offboarding processes at Brunei Fertilizer Industries. 
+                This card ensures secure and efficient access to BFI facilities and systems, 
+                streamlining the transition for new hires and departing employees.
+            </p>
+            <p>
+                The onboarding process involves coordination between the <strong>Security Team, OSS Section, and HSSE Department</strong> 
+                to issue access cards, provide necessary training, and ensure compliance with safety protocols.
+            </p>
+            <p>
+                For offboarding, the card is deactivated, and access is revoked in a timely manner to maintain security and accountability.
+            </p>
+        </div>
+        
+        <div id="raci" class="tab-content">
+            <h2>RACI Summary</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Department</th>
+                        <th>Responsible</th>
+                        <th>Accountable</th>
+                        <th>Consulted</th>
+                        <th>Informed</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Security Team</td>
+                        <td>Issue/Revoke Access Cards</td>
+                        <td>Access Control</td>
+                        <td>HSSE Department</td>
+                        <td>All Departments</td>
+                    </tr>
+                    <tr>
+                        <td>OSS Section</td>
+                        <td>Coordinate Onboarding</td>
+                        <td>Employee Records</td>
+                        <td>HR Department</td>
+                        <td>Security Team</td>
+                    </tr>
+                    <tr>
+                        <td>HSSE Department</td>
+                        <td>Safety Training</td>
+                        <td>Compliance</td>
+                        <td>Security Team</td>
+                        <td>OSS Section</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div id="form" class="tab-content">
+            <h2>Downloadable Form</h2>
+            <p>
+                Download the <strong>BFI Access Card Request Form</strong> for onboarding or offboarding processes:
+            </p>
+            <a href="#" class="download-btn">Download Form (PDF)</a>
+            <p><em>Note: Replace the link with the actual PDF form.</em></p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>Done by: Security Team, OSS Section, HSSE Department</p>
+    </footer>
+    
+    <script>
+        function openTab(tabName) {
+            const tabs = document.querySelectorAll('.tab');
+            const contents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => tab.classList.remove('active'));
+            contents.forEach(content => content.classList.remove('active'));
+            
+            event.currentTarget.classList.add('active');
+            document.getElementById(tabName).classList.add('active');
+        }
+        
+        // Scroll animation for the card
+        window.addEventListener('scroll', () => {
+            const cardContainer = document.querySelector('.card-container');
+            const scrollPosition = window.scrollY;
+            cardContainer.style.transform = `rotateY(${scrollPosition / 10}deg)`;
+        });
+    </script>
+</body>
+</html>
+
+#BFI #AI
