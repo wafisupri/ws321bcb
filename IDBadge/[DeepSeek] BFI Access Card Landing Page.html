@@ -1,15 +1,16 @@
-HTML for Work Website 03
 
 
 
-DeepSeek
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="DeepSeek">
     <title>BFI Access Card – Onboarding &amp; Offboarding Portal</title>
+    <base href="./">
+    <link rel="icon" type="image/png" href="Page04-BFILogo.png">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <!-- Google Fonts: Inter for clean corporate look -->
@@ -27,18 +28,18 @@ DeepSeek
         }
 
         :root {
-            --primary: #0C1D3D;
-            --primary-light: #1A2F5A;
-            --secondary: #1A7A7A;
-            --secondary-light: #2A9A9A;
+            --primary: #1A1A1A;
+            --primary-light: #333333;
+            --secondary: #8B7335;
+            --secondary-light: #B89E4A;
             --gold: #C9A84C;
             --gold-light: #DFC56A;
             --gold-dark: #A8882E;
-            --bg-light: #F5F7FC;
-            --text-dark: #1A1A2E;
-            --text-muted: #5A5A7A;
+            --bg-light: #F5F5F5;
+            --text-dark: #1A1A1A;
+            --text-muted: #6B6B6B;
             --white: #FFFFFF;
-            --shadow: 0 20px 60px rgba(12, 29, 61, 0.15);
+            --shadow: 0 20px 60px rgba(26, 26, 26, 0.15);
             --radius: 16px;
             --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -94,7 +95,7 @@ DeepSeek
         .hero {
             position: relative;
             min-height: 100vh;
-            background: linear-gradient(145deg, var(--primary) 0%, #0F2650 40%, var(--primary-light) 100%);
+            background: linear-gradient(145deg, var(--primary) 0%, #2A2A2A 40%, var(--primary-light) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -107,8 +108,8 @@ DeepSeek
             position: absolute;
             inset: 0;
             background:
-                radial-gradient(ellipse at 20% 50%, rgba(201, 168, 76, 0.06) 0%, transparent 70%),
-                radial-gradient(ellipse at 80% 50%, rgba(26, 122, 122, 0.08) 0%, transparent 70%);
+                radial-gradient(ellipse at 20% 50%, rgba(201, 168, 76, 0.08) 0%, transparent 70%),
+                radial-gradient(ellipse at 80% 50%, rgba(201, 168, 76, 0.04) 0%, transparent 70%);
             pointer-events: none;
         }
 
@@ -165,17 +166,22 @@ DeepSeek
         .card-wrapper {
             perspective: 1200px;
             width: 100%;
-            max-width: 380px;
+            max-width: 340px;
             justify-self: center;
         }
 
         .card-3d {
             position: relative;
             width: 100%;
-            aspect-ratio: 1.618 / 1;
+            aspect-ratio: 1 / 1.618;
             transform-style: preserve-3d;
-            transition: transform 0.05s linear;
             will-change: transform;
+            animation: spin-card 24s linear infinite;
+        }
+
+        @keyframes spin-card {
+            0% { transform: perspective(1200px) rotateY(0deg); }
+            100% { transform: perspective(1200px) rotateY(360deg); }
         }
 
         .card-face {
@@ -192,7 +198,7 @@ DeepSeek
 
         /* ---- FRONT FACE (Page 1) ---- */
         .card-front {
-            background: linear-gradient(145deg, #ffffff 0%, #f0f3fa 100%);
+            background: linear-gradient(145deg, #ffffff 0%, #f0f0f0 100%);
             border: 1px solid rgba(255, 255, 255, 0.3);
             padding: 28px 26px 22px;
             transform: rotateY(0deg);
@@ -282,7 +288,7 @@ DeepSeek
             font-size: 1.1rem;
             font-weight: 600;
             color: var(--primary);
-            background: rgba(12, 29, 61, 0.04);
+            background: rgba(26, 26, 26, 0.04);
             padding: 6px 12px;
             border-radius: 6px;
             border-left: 3px solid var(--gold);
@@ -304,7 +310,7 @@ DeepSeek
             justify-content: space-between;
             align-items: center;
             padding-top: 12px;
-            border-top: 1px solid rgba(12, 29, 61, 0.06);
+            border-top: 1px solid rgba(26, 26, 26, 0.06);
         }
 
         .card-front .card-footer-deco .chip {
@@ -325,7 +331,7 @@ DeepSeek
 
         /* ---- BACK FACE (Page 3) ---- */
         .card-back {
-            background: linear-gradient(145deg, var(--primary) 0%, #0F2650 100%);
+            background: linear-gradient(145deg, var(--primary) 0%, #2A2A2A 100%);
             border: 1px solid rgba(201, 168, 76, 0.2);
             padding: 28px 26px 22px;
             transform: rotateY(180deg);
@@ -499,7 +505,7 @@ DeepSeek
             max-width: 600px;
             margin-left: auto;
             margin-right: auto;
-            border: 1px solid rgba(12, 29, 61, 0.06);
+            border: 1px solid rgba(26, 26, 26, 0.06);
         }
 
         .tab-btn {
@@ -525,13 +531,13 @@ DeepSeek
 
         .tab-btn:hover {
             color: var(--primary);
-            background: rgba(12, 29, 61, 0.04);
+            background: rgba(26, 26, 26, 0.04);
         }
 
         .tab-btn.active {
             background: var(--primary);
             color: var(--white);
-            box-shadow: 0 8px 24px rgba(12, 29, 61, 0.20);
+            box-shadow: 0 8px 24px rgba(26, 26, 26, 0.20);
         }
 
         .tab-btn.active i {
@@ -580,7 +586,7 @@ DeepSeek
         }
 
         .overview-card:hover {
-            box-shadow: 0 8px 30px rgba(12, 29, 61, 0.06);
+            box-shadow: 0 8px 30px rgba(26, 26, 26, 0.06);
             transform: translateY(-2px);
         }
 
@@ -619,7 +625,7 @@ DeepSeek
             display: flex;
             align-items: center;
             gap: 10px;
-            border-bottom: 1px solid rgba(12, 29, 61, 0.04);
+            border-bottom: 1px solid rgba(26, 26, 26, 0.04);
         }
 
         .overview-card ul li:last-child {
@@ -669,8 +675,8 @@ DeepSeek
             background: var(--white);
             border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(12, 29, 61, 0.06);
-            border: 1px solid rgba(12, 29, 61, 0.06);
+            box-shadow: 0 4px 20px rgba(26, 26, 26, 0.06);
+            border: 1px solid rgba(26, 26, 26, 0.06);
         }
 
         .raci-table thead th {
@@ -693,7 +699,7 @@ DeepSeek
 
         .raci-table tbody td {
             padding: 12px 16px;
-            border-bottom: 1px solid rgba(12, 29, 61, 0.05);
+            border-bottom: 1px solid rgba(26, 26, 26, 0.05);
             vertical-align: middle;
             color: var(--text-dark);
         }
@@ -804,12 +810,12 @@ DeepSeek
             background: var(--bg-light);
             border-radius: var(--radius);
             padding: 28px 30px;
-            border: 1px solid rgba(12, 29, 61, 0.06);
+            border: 1px solid rgba(26, 26, 26, 0.06);
             transition: var(--transition);
         }
 
         .list-card:hover {
-            box-shadow: 0 8px 30px rgba(12, 29, 61, 0.06);
+            box-shadow: 0 8px 30px rgba(26, 26, 26, 0.06);
         }
 
         .list-card h3 {
@@ -843,7 +849,7 @@ DeepSeek
             align-items: flex-start;
             gap: 12px;
             padding: 8px 0;
-            border-bottom: 1px solid rgba(12, 29, 61, 0.04);
+            border-bottom: 1px solid rgba(26, 26, 26, 0.04);
             font-size: 0.88rem;
             color: var(--text-dark);
             cursor: pointer;
@@ -901,7 +907,7 @@ DeepSeek
             font-size: 0.6rem;
             font-weight: 600;
             color: var(--text-muted);
-            background: rgba(12, 29, 61, 0.06);
+            background: rgba(26, 26, 26, 0.06);
             padding: 0.1rem 0.6rem;
             border-radius: 12px;
             white-space: nowrap;
@@ -937,7 +943,7 @@ DeepSeek
 
         .btn-primary:hover {
             background: var(--primary-light);
-            box-shadow: 0 8px 24px rgba(12, 29, 61, 0.25);
+            box-shadow: 0 8px 24px rgba(26, 26, 26, 0.25);
             transform: translateY(-2px);
         }
 
@@ -955,12 +961,12 @@ DeepSeek
         .btn-outline {
             background: transparent;
             color: var(--primary);
-            border: 2px solid rgba(12, 29, 61, 0.15);
+            border: 2px solid rgba(26, 26, 26, 0.15);
         }
 
         .btn-outline:hover {
             border-color: var(--primary);
-            background: rgba(12, 29, 61, 0.03);
+            background: rgba(26, 26, 26, 0.03);
         }
 
         /* ----- FOOTER ----- */
@@ -986,16 +992,15 @@ DeepSeek
         }
 
         .footer .brand-footer .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: var(--gold);
-            border-radius: 8px;
+            width: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary);
-            font-weight: 800;
-            font-size: 1rem;
+        }
+
+        .footer .brand-footer .logo-icon img {
+            width: 100%;
+            height: auto;
         }
 
         .footer .brand-footer .name {
@@ -1061,7 +1066,7 @@ DeepSeek
             }
 
             .card-wrapper {
-                max-width: 320px;
+                max-width: 280px;
             }
 
             .overview-grid {
@@ -1173,6 +1178,7 @@ DeepSeek
     <section class="hero" id="top">
         <div class="container">
             <div class="hero-content">
+                <img src="Page04-BFILogo.png" alt="BFI Logo" style="height:250px; display:block; margin-bottom:16px;" />
                 <span class="badge-gold"><i class="fas fa-id-card" style="margin-right:6px;"></i> Access Card v2.0</span>
                 <h1>
                     BFI Access Card<br />
@@ -1193,72 +1199,8 @@ DeepSeek
             <!-- 3D Card -->
             <div class="card-wrapper">
                 <div class="card-3d" id="card3d">
-                    <!-- FRONT (Page 1) -->
-                    <div class="card-face card-front">
-                        <div class="card-header">
-                            <div class="brand">
-                                <div class="brand-icon">BFI</div>
-                                <div class="brand-text">
-                                    Brunei Fertilizer<br />
-                                    <small>Industries Sdn Bhd</small>
-                                </div>
-                            </div>
-                            <span class="card-badge">ACCESS</span>
-                        </div>
-                        <div class="card-body">
-                            <div class="field">
-                                <span class="field-label"><i class="fas fa-hashtag" style="margin-right:4px;font-size:0.5rem;"></i> SAP No. (BFI No.)</span>
-                                <span class="field-value placeholder">BFI-2025-001427</span>
-                            </div>
-                            <div class="field">
-                                <span class="field-label"><i class="fas fa-user" style="margin-right:4px;font-size:0.5rem;"></i> Full Name</span>
-                                <span class="field-value placeholder">Ahmad bin Haji Abdullah</span>
-                            </div>
-                        </div>
-                        <div class="card-footer-deco">
-                            <span class="chip"></span>
-                            <span class="stripe"></span>
-                        </div>
-                    </div>
-
-                    <!-- BACK (Page 3) -->
-                    <div class="card-face card-back">
-                        <div class="back-header">
-                            <div class="brand-icon">BFI</div>
-                            <h4>
-                                Brunei Fertilizer Industries
-                                <small>Sdn Bhd · Access Card</small>
-                            </h4>
-                        </div>
-                        <div class="property-text">
-                            <i class="fas fa-gavel" style="margin-right:6px;color:var(--gold);"></i>
-                            This card is a property of Brunei Fertilizer Industries Sdn Bhd.
-                            If found, or for further enquiries, please contact:
-                        </div>
-                        <div class="contact-grid">
-                            <div class="contact-item">
-                                <i class="fas fa-shield-alt"></i>
-                                <span><span class="label">Security</span> <span class="number">+673 727 6993</span></span>
-                            </div>
-                            <div class="contact-item">
-                                <i class="fas fa-ambulance"></i>
-                                <span><span class="label">Medic / Health</span> <span class="number">+673 737 5991</span></span>
-                            </div>
-                            <div class="contact-item">
-                                <i class="fas fa-fire-extinguisher"></i>
-                                <span><span class="label">Fire &amp; Rescue</span> <span class="number">+673 737 5995</span></span>
-                            </div>
-                            <div class="contact-item">
-                                <i class="fas fa-hard-hat"></i>
-                                <span><span class="label">Safety</span> <span class="number">+673 737 4998</span></span>
-                            </div>
-                        </div>
-                        <address class="address">
-                            <i class="fas fa-map-pin"></i>
-                            Ground Floor, SPARK Centre, Sungai Liang Industrial Park,
-                            Simpang 787, Kg Sungai Liang, Belait KC1135, Brunei Darussalam.
-                        </address>
-                    </div>
+                    <div class="card-face card-front" style="background: url('Page01-BFIAccessCard.jpg') center/cover no-repeat;"></div>
+                    <div class="card-face card-back" style="background: url('Page03-BFIAccessCard.jpg') center/cover no-repeat;"></div>
                 </div>
             </div>
         </div>
@@ -1614,7 +1556,7 @@ DeepSeek
     <footer class="footer">
         <div class="container">
             <div class="brand-footer">
-                <div class="logo-icon">BFI</div>
+                <div class="logo-icon"><img src="Page04-BFILogo.png" alt="BFI Logo" /></div>
                 <div class="name">
                     Brunei Fertilizer Industries
                     <small>Sdn Bhd · Access Card Management</small>
@@ -1636,39 +1578,7 @@ DeepSeek
         (function() {
             'use strict';
 
-            // ---- 3D CARD ROTATION ON SCROLL ----
-            const card = document.getElementById('card3d');
-            const hero = document.querySelector('.hero');
-            let ticking = false;
-
-            function updateCardRotation() {
-                const scrollY = window.scrollY;
-                const heroHeight = hero.offsetHeight;
-                // map scroll from 0..heroHeight to 0..180 deg
-                let progress = Math.min(scrollY / heroHeight, 1);
-                // ease in/out for a more natural feel
-                const eased = progress < 0.5 ?
-                    2 * progress * progress :
-                    1 - Math.pow(-2 * progress + 2, 2) / 2;
-                const angle = eased * 180;
-                card.style.transform = `rotateY(${angle}deg)`;
-            }
-
-            function onScroll() {
-                if (!ticking) {
-                    window.requestAnimationFrame(function() {
-                        updateCardRotation();
-                        ticking = false;
-                    });
-                    ticking = true;
-                }
-            }
-
-            window.addEventListener('scroll', onScroll, { passive: true });
-            window.addEventListener('resize', onScroll, { passive: true });
-
-            // initial call
-            setTimeout(updateCardRotation, 50);
+            // ---- 3D CARD: continuous spin via CSS animation (see @keyframes spin-card) ----
 
             // ---- TABS ----
             const tabBtns = document.querySelectorAll('.tab-btn');
@@ -1751,14 +1661,14 @@ DeepSeek
                     <head>
                         <title>${title}</title>
                         <style>
-                            body { font-family: 'Inter', Arial, sans-serif; max-width: 700px; margin: 40px auto; padding: 30px; color: #1A1A2E; line-height: 1.7; }
-                            h1 { font-size: 24px; color: #0C1D3D; border-bottom: 3px solid #C9A84C; padding-bottom: 10px; }
-                            .meta { color: #5A5A7A; font-size: 14px; margin-bottom: 24px; }
+                            body { font-family: 'Inter', Arial, sans-serif; max-width: 700px; margin: 40px auto; padding: 30px; color: #1A1A1A; line-height: 1.7; }
+                            h1 { font-size: 24px; color: #1A1A1A; border-bottom: 3px solid #C9A84C; padding-bottom: 10px; }
+                            .meta { color: #6B6B6B; font-size: 14px; margin-bottom: 24px; }
                             ul { list-style: none; padding: 0; }
                             li { padding: 8px 0; border-bottom: 1px solid #EEE; font-size: 15px; }
-                            .checked { color: #1A7A7A; font-weight: 500; }
+                            .checked { color: #8B7335; font-weight: 500; }
                             .unchecked { color: #999; }
-                            .footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid #EEE; font-size: 13px; color: #5A5A7A; text-align: center; }
+                            .footer { margin-top: 32px; padding-top: 16px; border-top: 1px solid #EEE; font-size: 13px; color: #6B6B6B; text-align: center; }
                         </style>
                     </head>
                     <body>
@@ -1811,5 +1721,3 @@ DeepSeek
 
 </body>
 </html>
-
-#BFI #AI

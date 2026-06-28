@@ -1,167 +1,480 @@
-HTML for Work Website 05
-
-
-
-ChatGPT
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>BFI Access Card Management Portal</title>
+<link rel="icon" type="image/png" href="Page04-BFILogo.png">
 <style>
+/* ── BFI Brand Palette (Brand Guideline v2025) ── */
 :root{
- --primary:#0b3b6e;
- --secondary:#1f5f99;
- --accent:#d9b24c;
- --light:#f5f7fa;
- --dark:#1f2937;
+  --primary:     #1A1A1A;
+  --primary-light:#333333;
+  --gold:        #C9A84C;
+  --gold-light:  #DFC56A;
+  --gold-dark:   #A8882E;
+  --gray:        #6B6B6B;
+  --off-white:   #F4F4F4;
+  --white:       #FFFFFF;
+  --black:       #000000;
 }
-*{box-sizing:border-box}
-body{margin:0;font-family:Segoe UI,Arial,sans-serif;background:var(--light);color:var(--dark)}
+
+*{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  font-family:'Aptos','Segoe UI',Arial,sans-serif;
+  background:var(--off-white);
+  color:var(--black);
+  line-height:1.6;
+}
+
+/* ── HEADER ── */
 header{
-background:linear-gradient(135deg,var(--primary),var(--secondary));
-color:white;padding:60px 20px;text-align:center;
+  background:linear-gradient(135deg,var(--primary) 0%,#2A2A2A 100%);
+  color:var(--white);
+  padding:48px 24px 40px;
+  text-align:center;
 }
-.hero{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:40px;padding:40px}
-.card3d{width:340px;height:220px;perspective:1200px;position:sticky;top:80px}
-.inner{width:100%;height:100%;position:relative;transform-style:preserve-3d;animation:spin 10s infinite linear}
+header img.logo{
+  height:195px;
+  width:auto;
+  margin-bottom:0px;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
+  filter:brightness(0) invert(1);
+}
+header h1{font-size:clamp(1.4rem,4vw,2rem);font-weight:700;margin-bottom:8px}
+header p{font-size:1rem;opacity:.85}
+
+/* ── HERO ── */
+.hero{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  gap:48px;
+  padding:56px 24px;
+  max-width:1100px;
+  margin:auto;
+}
+.hero-text{max-width:560px}
+.hero-text h2{font-size:1.6rem;font-weight:700;color:var(--primary);margin-bottom:12px}
+.hero-text p{color:#333;margin-bottom:16px}
+.hero-text .badge{
+  display:inline-block;
+  background:rgba(251,176,52,.15);
+  border:1px solid rgba(251,176,52,.4);
+  color:var(--primary);
+  font-size:.75rem;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;
+  padding:4px 12px;border-radius:4px;margin-bottom:14px;
+}
+.hero-text a.cta{
+  display:inline-block;
+  background:var(--gold);
+  color:var(--primary);
+  font-weight:700;font-size:.9rem;
+  padding:12px 28px;border-radius:6px;
+  text-decoration:none;
+  transition:background .2s,transform .2s,box-shadow .2s;
+}
+.hero-text a.cta:hover{
+  background:#ffc55a;
+  transform:translateY(-2px);
+  box-shadow:0 6px 16px rgba(251,176,52,.35);
+}
+
+/* ── 3-D FLIP CARD ── */
+.card3d{
+  width:min(320px,75vw);
+  aspect-ratio:1/1.618;
+  perspective:1200px;
+  flex-shrink:0;
+}
+.card3d .inner{
+  width:100%;height:100%;
+  position:relative;
+  transform-style:preserve-3d;
+  animation:spin-card 24s linear infinite;
+}
 .face{
-position:absolute;width:100%;height:100%;
-backface-visibility:hidden;border-radius:12px;overflow:hidden;
-box-shadow:0 10px 30px rgba(0,0,0,.25);
+  position:absolute;inset:0;
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  border-radius:14px;overflow:hidden;
+  box-shadow:0 16px 48px rgba(0,0,0,.22);
 }
-.face img{width:100%;height:100%;object-fit:cover}
+.face img{width:100%;height:100%;object-fit:cover;display:block}
 .back{transform:rotateY(180deg)}
-@keyframes spin{
-0%{transform:rotateY(0deg)}
-50%{transform:rotateY(180deg)}
-100%{transform:rotateY(360deg)}
+@keyframes spin-card{
+  0%{transform:perspective(1200px) rotateY(0deg)}
+  100%{transform:perspective(1200px) rotateY(360deg)}
 }
-.tabs{max-width:1100px;margin:auto;padding:20px}
-.tab-buttons{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
+
+/* ── TABS ── */
+.tabs-section{
+  max-width:1100px;margin:0 auto;
+  padding:0 24px 64px;
+}
+.tab-buttons{
+  display:flex;flex-wrap:wrap;gap:0;
+  border-bottom:2px solid #d1d1d1;
+  margin-bottom:0;
+}
 .tab-buttons button{
-padding:12px 18px;border:none;background:var(--primary);color:white;
-cursor:pointer;border-radius:6px;font-weight:600;
+  padding:13px 22px;
+  border:none;background:transparent;
+  color:var(--gray);
+  cursor:pointer;font-weight:600;font-size:.88rem;
+  border-bottom:3px solid transparent;
+  margin-bottom:-2px;
+  transition:color .2s,border-color .2s;
+  white-space:nowrap;
 }
-.tab-content{display:none;background:white;padding:25px;border-radius:10px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+.tab-buttons button:hover{color:var(--black)}
+.tab-buttons button.active{
+  color:var(--primary);
+  border-bottom-color:var(--gold);
+}
+
+.tab-content{
+  display:none;
+  background:var(--white);
+  padding:32px;
+  border-radius:0 0 10px 10px;
+  box-shadow:0 2px 12px rgba(0,0,0,.07);
+}
 .tab-content.active{display:block}
-table{width:100%;border-collapse:collapse}
-th,td{border:1px solid #ddd;padding:10px}
-th{background:var(--primary);color:white}
-.download{
-display:inline-block;background:var(--accent);color:#000;
-padding:10px 15px;border-radius:6px;text-decoration:none;font-weight:bold
+
+.tab-content h2{
+  font-size:1.2rem;font-weight:700;
+  color:var(--primary);margin-bottom:8px;
 }
+.tab-content > p, .tab-content > ul{
+  color:#333;margin-bottom:12px;
+}
+.tab-content ul{padding-left:0;list-style:none}
+.tab-content ul li{
+  display:flex;align-items:flex-start;gap:10px;
+  padding:8px 0;border-bottom:1px solid #ebebeb;
+  font-size:.95rem;color:#222;
+}
+.tab-content ul li:last-child{border-bottom:none}
+.tab-content ul li::before{
+  content:'';
+  flex-shrink:0;
+  width:8px;height:8px;border-radius:50%;
+  background:var(--gold);margin-top:7px;
+}
+.tab-content .sub{font-size:.88rem;color:var(--gray);margin-bottom:24px}
+
+/* ── RACI TABLE ── */
+table{width:100%;border-collapse:collapse;margin-top:8px}
+th{
+  background:var(--primary);color:var(--white);
+  padding:11px 14px;font-size:.85rem;text-align:center;
+}
+th:first-child{text-align:left}
+td{
+  border:1px solid #d1d1d1;
+  padding:10px 14px;font-size:.85rem;text-align:center;
+  background:var(--white);
+}
+td:first-child{text-align:left;font-weight:600;color:var(--primary)}
+tr:nth-child(even) td{background:var(--off-white)}
+.badge-ra{background:var(--primary);color:#fff;border-radius:4px;padding:2px 8px;font-size:.78rem;font-weight:700}
+.badge-r {background:var(--primary-light);color:#fff;border-radius:4px;padding:2px 8px;font-size:.78rem;font-weight:700}
+.badge-a {background:var(--gold);color:var(--primary);border-radius:4px;padding:2px 8px;font-size:.78rem;font-weight:700}
+.badge-c {background:var(--gray);color:#fff;border-radius:4px;padding:2px 8px;font-size:.78rem;font-weight:700}
+.badge-i {border:1px solid #d1d1d1;border-radius:4px;padding:2px 8px;font-size:.78rem;color:#555}
+.raci-key{font-size:.78rem;color:var(--gray);text-align:center;margin-top:10px;letter-spacing:.04em;text-transform:uppercase}
+
+/* ── DOWNLOADS ── */
+.dl-list{display:flex;flex-direction:column;gap:12px;margin-top:8px}
+.dl-item{
+  display:flex;align-items:center;gap:14px;
+  padding:16px;border:1px solid #d1d1d1;border-radius:8px;
+  background:var(--white);
+  transition:box-shadow .2s,transform .2s;
+}
+.dl-item:hover{box-shadow:0 4px 14px rgba(0,0,0,.09);transform:translateY(-1px)}
+.dl-icon{
+  flex-shrink:0;width:40px;height:40px;border-radius:8px;
+  background:var(--primary);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--white);font-size:1.1rem;
+}
+.dl-info{flex:1}
+.dl-info strong{display:block;font-size:.9rem;color:var(--primary)}
+.dl-info span{font-size:.82rem;color:var(--gray)}
+.dl-badge{
+  font-size:.72rem;font-weight:700;
+  background:rgba(251,176,52,.15);
+  color:var(--primary);
+  padding:3px 8px;border-radius:4px;
+  flex-shrink:0;
+}
+.dl-btn{
+  flex-shrink:0;
+  background:var(--gold);color:var(--primary);
+  border:none;border-radius:6px;
+  padding:9px 18px;font-weight:700;font-size:.84rem;
+  cursor:pointer;
+  transition:background .2s,transform .2s;
+}
+.dl-btn:hover{background:#ffc55a;transform:translateY(-1px)}
+
+/* ── FOOTER ── */
 footer{
-margin-top:40px;background:var(--primary);color:white;
-text-align:center;padding:20px
+  background:var(--primary);
+  color:rgba(255,255,255,.8);
+  text-align:center;
+  padding:32px 24px;
+  font-size:.88rem;
+  line-height:1.8;
+  border-top:3px solid var(--gold);
+}
+footer img.logo{height:135px;margin-bottom:12px;filter:brightness(0) invert(1);}
+footer strong{color:var(--white)}
+
+@media(max-width:640px){
+  .tab-buttons button{padding:10px 14px;font-size:.8rem}
+  .tab-content{padding:20px}
+  .dl-item{flex-wrap:wrap}
 }
 </style>
-<script>
-function openTab(id){
-document.querySelectorAll('.tab-content').forEach(x=>x.classList.remove('active'));
-document.getElementById(id).classList.add('active');
-}
-</script>
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
-<h1>BFI Access Card Management Portal</h1>
-<p>Employee On‑Boarding & Off‑Boarding Coordination Framework</p>
+  <img src="Page04-BFILogo.png" alt="BFI Logo" class="logo">
+  <h1>BFI Access Card Management Portal</h1>
+  <p>Employee On‑Boarding &amp; Off‑Boarding Coordination Framework</p>
 </header>
 
+<!-- HERO -->
 <section class="hero">
-<div class="card3d">
-<div class="inner">
-<div class="face"><img src="page_1.png" alt="BFI Access Card Front"></div>
-<div class="face back"><img src="page_3.png" alt="BFI Access Card Back"></div>
-</div>
-</div>
 
-<div style="max-width:600px">
-<h2>Corporate Access Governance</h2>
-<p>This portal outlines the responsibilities, workflow and supporting documentation required for the issuance, management and recovery of BFI Access Cards throughout the employee lifecycle.</p>
-</div>
+  <!-- 3D Card -->
+  <div class="card3d">
+    <div class="inner">
+      <div class="face front">
+        <img src="Page01-BFIAccessCard.jpg" alt="BFI Access Card — Front">
+      </div>
+      <div class="face back">
+        <img src="Page03-BFIAccessCard.jpg" alt="BFI Access Card — Back">
+      </div>
+    </div>
+  </div>
+
+  <!-- Text -->
+  <div class="hero-text">
+    <span class="badge">BFI Employee Access</span>
+    <h2>Corporate Access Governance</h2>
+    <p>This portal outlines the responsibilities, workflow, and supporting documentation required for the issuance, management, and recovery of BFI Access Cards throughout the employee lifecycle.</p>
+    <p>The BFI Access Card is the official identification and controlled-access credential for all employees and authorised personnel at Sungai Liang Industrial Park.</p>
+    <a href="#tabs" class="cta" onclick="document.getElementById('tabs').scrollIntoView({behavior:'smooth'});return false;">
+      Explore Process ↓
+    </a>
+  </div>
+
 </section>
 
-<section class="tabs">
-<div class="tab-buttons">
-<button onclick="openTab('overview')">Overview</button>
-<button onclick="openTab('onboarding')">On‑Boarding</button>
-<button onclick="openTab('offboarding')">Off‑Boarding</button>
-<button onclick="openTab('raci')">RACI Summary</button>
-<button onclick="openTab('downloads')">Downloads</button>
-</div>
+<!-- TABS -->
+<section class="tabs-section" id="tabs">
+  <div class="tab-buttons">
+    <button class="active" onclick="openTab('overview',this)">Overview</button>
+    <button onclick="openTab('onboarding',this)">On‑Boarding</button>
+    <button onclick="openTab('offboarding',this)">Off‑Boarding</button>
+    <button onclick="openTab('raci',this)">RACI Summary</button>
+    <button onclick="openTab('downloads',this)">Downloads</button>
+  </div>
 
-<div id="overview" class="tab-content active">
-<h2>Overview</h2>
-<p>The BFI Access Card serves as the official identification and controlled access credential for employees and authorised personnel. The process requires collaboration between HR, Hiring Department, Security, IT and HSSE.</p>
-<ul>
-<li>Card request and approval</li>
-<li>Access level assignment</li>
-<li>Card issuance and acknowledgement</li>
-<li>Asset recovery during separation</li>
-<li>Access revocation and record retention</li>
-</ul>
-</div>
+  <!-- Overview -->
+  <div id="overview" class="tab-content active">
+    <h2>Process at a Glance</h2>
+    <p class="sub">The BFI Access Card serves as the official identification and controlled-access credential for employees and authorised personnel.</p>
+    <ul>
+      <li>All new employees must complete the access card application as part of their on-boarding checklist</li>
+      <li>The Security Team, OSS Section, and HSSE Department are jointly responsible for card issuance and management</li>
+      <li>Access level is assigned based on role and department requirements</li>
+      <li>Access cards must be returned upon termination, resignation, or contract completion</li>
+      <li>Lost or damaged cards must be reported to Security immediately for deactivation and replacement</li>
+    </ul>
+  </div>
 
-<div id="onboarding" class="tab-content">
-<h2>On‑Boarding Departments</h2>
-<ul>
-<li><strong>HR:</strong> Employee master data and onboarding request.</li>
-<li><strong>Hiring Department:</strong> Access requirements validation.</li>
-<li><strong>Security Team:</strong> Card production, issuance and access control coordination.</li>
-<li><strong>IT Department:</strong> System account provisioning.</li>
-<li><strong>HSSE Department:</strong> Safety induction and compliance verification.</li>
-</ul>
-</div>
+  <!-- On-Boarding -->
+  <div id="onboarding" class="tab-content">
+    <h2>Employee On‑Boarding Process</h2>
+    <p class="sub">Step-by-step procedure for issuing the BFI Access Card to new employees and business partners.</p>
+    <ul>
+      <li><div><strong>1 — HR Notification</strong><br>HR Department notifies Security Team of new employee's start date and details at least 3 business days in advance.</div></li>
+      <li><div><strong>2 — Document Verification</strong><br>Employee submits required documents: national ID copy, passport-size photograph, and signed access card application form.</div></li>
+      <li><div><strong>3 — Photo Capture</strong><br>Security Team captures employee photograph at the Security Office, SPARK Centre, Ground Floor.</div></li>
+      <li><div><strong>4 — Card Production</strong><br>OSS Section processes the access card with employee photo, full name, SAP/BFI number, and department designation.</div></li>
+      <li><div><strong>5 — HSSE Briefing</strong><br>HSSE Department conducts safety orientation and briefs the employee on facility access rules and PPE requirements.</div></li>
+      <li><div><strong>6 — Card Handover</strong><br>Security Team activates the card and hands it over to the employee. Employee signs the card receipt register.</div></li>
+    </ul>
+  </div>
 
-<div id="offboarding" class="tab-content">
-<h2>Off‑Boarding Departments</h2>
-<ul>
-<li>Recover access card and company assets.</li>
-<li>Deactivate physical access rights.</li>
-<li>Disable IT accounts and credentials.</li>
-<li>Update personnel records.</li>
-<li>Maintain audit trail and closure documentation.</li>
-</ul>
-</div>
+  <!-- Off-Boarding -->
+  <div id="offboarding" class="tab-content">
+    <h2>Employee Off‑Boarding Process</h2>
+    <p class="sub">Procedure for access card return and account deactivation when an employee leaves BFI.</p>
+    <ul>
+      <li><div><strong>1 — HR Notification</strong><br>HR notifies Security Team, OSS Section, and HSSE of employee's last working day at least 5 business days in advance.</div></li>
+      <li><div><strong>2 — Clearance Check</strong><br>Employee completes department clearance from their section head, confirming no outstanding items or equipment.</div></li>
+      <li><div><strong>3 — Card Return</strong><br>Employee returns the physical access card to the Security Office at SPARK Centre. Security verifies and logs card return.</div></li>
+      <li><div><strong>4 — Deactivation</strong><br>OSS Section deactivates the card in the access control system within 24 hours of return. HSSE updates safety records.</div></li>
+      <li><div><strong>5 — Final Confirmation</strong><br>Security Team issues a clearance certificate confirming card return and system deactivation for exit documentation.</div></li>
+    </ul>
+  </div>
 
-<div id="raci" class="tab-content">
-<h2>RACI Summary</h2>
-<table>
-<tr><th>Activity</th><th>HR</th><th>Department</th><th>Security</th><th>IT</th><th>HSSE</th></tr>
-<tr><td>Employee Registration</td><td>R/A</td><td>C</td><td>I</td><td>I</td><td>I</td></tr>
-<tr><td>Access Approval</td><td>C</td><td>A</td><td>R</td><td>C</td><td>C</td></tr>
-<tr><td>Card Issuance</td><td>I</td><td>I</td><td>R/A</td><td>C</td><td>I</td></tr>
-<tr><td>Card Recovery</td><td>A</td><td>C</td><td>R</td><td>C</td><td>I</td></tr>
-<tr><td>Access Deactivation</td><td>I</td><td>I</td><td>R</td><td>R</td><td>I</td></tr>
-</table>
-</div>
+  <!-- RACI -->
+  <div id="raci" class="tab-content">
+    <h2>Responsibility Overview</h2>
+    <p class="sub">Summary of key responsibilities across departments for the access card lifecycle.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Activity</th>
+          <th>Security Team</th>
+          <th>OSS Section</th>
+          <th>HSSE Dept</th>
+          <th>HR Dept</th>
+          <th>Employee</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Card Application</td>
+          <td><span class="badge-c">C</span></td>
+          <td><span class="badge-c">C</span></td>
+          <td><span class="badge-i">I</span></td>
+          <td><span class="badge-ra">R/A</span></td>
+          <td><span class="badge-r">R</span></td>
+        </tr>
+        <tr>
+          <td>Card Production</td>
+          <td><span class="badge-i">I</span></td>
+          <td><span class="badge-ra">R/A</span></td>
+          <td><span class="badge-i">I</span></td>
+          <td><span class="badge-c">C</span></td>
+          <td><span class="badge-i">I</span></td>
+        </tr>
+        <tr>
+          <td>Safety Briefing</td>
+          <td><span class="badge-c">C</span></td>
+          <td><span class="badge-i">I</span></td>
+          <td><span class="badge-ra">R/A</span></td>
+          <td><span class="badge-i">I</span></td>
+          <td><span class="badge-r">R</span></td>
+        </tr>
+        <tr>
+          <td>Card Activation</td>
+          <td><span class="badge-ra">R/A</span></td>
+          <td><span class="badge-c">C</span></td>
+          <td><span class="badge-c">C</span></td>
+          <td><span class="badge-i">I</span></td>
+          <td><span class="badge-i">I</span></td>
+        </tr>
+        <tr>
+          <td>Card Return &amp; Deactivation</td>
+          <td><span class="badge-ra">R/A</span></td>
+          <td><span class="badge-r">R</span></td>
+          <td><span class="badge-c">C</span></td>
+          <td><span class="badge-a">A</span></td>
+          <td><span class="badge-r">R</span></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="raci-key">R = Responsible &nbsp;|&nbsp; A = Accountable &nbsp;|&nbsp; C = Consulted &nbsp;|&nbsp; I = Informed</p>
+  </div>
 
-<div id="downloads" class="tab-content">
-<h2>Forms & Templates</h2>
-<p>Recommended downloadable documents:</p>
-<ul>
-<li>Access Card Request Form</li>
-<li>Employee Onboarding Checklist</li>
-<li>Employee Offboarding Clearance Form</li>
-<li>Access Rights Approval Matrix</li>
-</ul>
-<a href="BFI Access Cards 2025_BFI & BRE Employee.pdf" class="download">Download Access Card Template (PDF)</a>
-</div>
+  <!-- Downloads -->
+  <div id="downloads" class="tab-content">
+    <h2>Downloadable Forms &amp; Documents</h2>
+    <p class="sub">All forms related to the BFI Access Card process.</p>
+    <div class="dl-list">
+      <div class="dl-item">
+        <div class="dl-icon">&#128196;</div>
+        <div class="dl-info">
+          <strong>BFI Access Card Application Form</strong>
+          <span>Complete form for new employee access card requests. Includes photo consent and data privacy agreement.</span>
+        </div>
+        <span class="dl-badge">PDF</span>
+        <button class="dl-btn">Download</button>
+      </div>
+      <div class="dl-item">
+        <div class="dl-icon">&#128196;</div>
+        <div class="dl-info">
+          <strong>BRE Access Card Application Form</strong>
+          <span>Application form for business partners and contractors requiring facility access.</span>
+        </div>
+        <span class="dl-badge">PDF</span>
+        <button class="dl-btn">Download</button>
+      </div>
+      <div class="dl-item">
+        <div class="dl-icon">&#128196;</div>
+        <div class="dl-info">
+          <strong>Access Card Return Form</strong>
+          <span>Form to be completed when returning an access card upon off-boarding.</span>
+        </div>
+        <span class="dl-badge">PDF</span>
+        <button class="dl-btn">Download</button>
+      </div>
+      <div class="dl-item">
+        <div class="dl-icon">&#128196;</div>
+        <div class="dl-info">
+          <strong>Lost Card Report Form</strong>
+          <span>Incident report form for lost or stolen access cards. Must be filed within 24 hours.</span>
+        </div>
+        <span class="dl-badge">PDF</span>
+        <button class="dl-btn">Download</button>
+      </div>
+      <div class="dl-item">
+        <div class="dl-icon">&#128196;</div>
+        <div class="dl-info">
+          <strong>On-Boarding Checklist</strong>
+          <span>Department-wise checklist for new employee on-boarding including access card milestones.</span>
+        </div>
+        <span class="dl-badge">PDF</span>
+        <button class="dl-btn">Download</button>
+      </div>
+      <div class="dl-item">
+        <div class="dl-icon">&#128196;</div>
+        <div class="dl-info">
+          <strong>Off-Boarding Checklist</strong>
+          <span>Department-wise checklist for employee exit process including card return verification.</span>
+        </div>
+        <span class="dl-badge">PDF</span>
+        <button class="dl-btn">Download</button>
+      </div>
+    </div>
+  </div>
+
 </section>
 
+<!-- FOOTER -->
 <footer>
-Prepared by: Security Team, OSS Section, HSSE Department<br>
-Brunei Fertilizer Industries (BFI)
+  <img src="Page04-BFILogo.png" alt="BFI Logo" class="logo"><br>
+  <strong>Brunei Fertilizer Industries Sdn Bhd</strong><br>
+  Ground Floor, SPARK Centre, Sungai Liang Industrial Park,<br>
+  Simpang 787, Kg Sungai Liang, Belait KC1135, Brunei Darussalam.<br><br>
+  Security: +673 727 6993 &nbsp;|&nbsp; Medic/Health: +673 737 5991 &nbsp;|&nbsp; Fire &amp; Rescue: +673 737 5995 &nbsp;|&nbsp; Safety: +673 737 4998<br><br>
+  <span style="opacity:.55;font-size:.8rem">&copy; 2025 Brunei Fertilizer Industries. All rights reserved.<br>
+  Prepared by: Security Team &nbsp;|&nbsp; OSS Section &nbsp;|&nbsp; HSSE Department</span>
 </footer>
 
+<script>
+function openTab(id, btn) {
+  document.querySelectorAll('.tab-content').forEach(x => x.classList.remove('active'));
+  document.querySelectorAll('.tab-buttons button').forEach(x => x.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
 </body>
 </html>
-
-
-#BFI #AI

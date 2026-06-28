@@ -40,8 +40,9 @@
     .theme-toggle { background: none; border: 0.5px solid var(--border); border-radius: 20px; padding: 5px 12px; font-size: 12px; font-weight: 500; color: var(--text2); cursor: pointer; font-family: inherit; display: inline-flex; align-items: center; gap: 5px; flex-shrink: 0; transition: all 0.15s; }
     .theme-toggle:hover { border-color: var(--text2); color: var(--text); }
 
-    /* HEADER — sticky */
-    .header { position: sticky; top: 0; z-index: 20; background: var(--bg); border-bottom: 0.5px solid var(--border); padding: 16px 48px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    /* HEADER — sticky with nav inside */
+    .header { position: sticky; top: 0; z-index: 20; background: var(--bg); border-bottom: 0.5px solid var(--border); }
+    .header-top { padding: 16px 48px 12px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
     .header-left { display: flex; align-items: center; gap: 14px; min-width: 0; }
     .header-logo { height: 150px; width: auto; display: block; flex-shrink: 0; filter: grayscale(100%); transition: filter 0.3s; }
     .header-logo:hover { filter: grayscale(0%); }
@@ -52,8 +53,8 @@
     .badge { display: inline-flex; align-items: center; gap: 6px; background: var(--green-50); color: var(--green-600); font-size: 11px; font-weight: 500; padding: 4px 10px; border-radius: 20px; border: 0.5px solid var(--green-100); flex-shrink: 0; }
     .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-600); }
 
-    /* NAV TABS — sticky below header */
-    .nav-scroll { position: sticky; z-index: 10; background: var(--bg); border-bottom: 0.5px solid var(--border); width: 100%; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }
+    /* NAV TABS */
+    .nav-scroll { width: 100%; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; -ms-overflow-style: none; }
     .nav-scroll::-webkit-scrollbar { display: none; }
     .nav { padding: 0 48px; display: inline-flex; gap: 0; min-width: min-content; }
     .nav button { background: none; border: none; border-bottom: 2px solid transparent; padding: 14px 20px; font-size: 14px; color: var(--text2); cursor: pointer; font-family: inherit; transition: all 0.15s; white-space: nowrap; flex: 0 0 auto; }
@@ -87,7 +88,7 @@
 
     /* Mobile-specific improvements */
     @media (max-width: 900px) {
-      .header { padding: 14px 20px; }
+      .header-top { padding: 14px 20px 10px; }
       .header-text h1 { font-size: 17px; }
       .header-text p { font-size: 11px; }
       .header-logo { height: 100px; }
@@ -116,7 +117,7 @@
       .flow-vert { display: none; }
       .flow-content { padding-bottom: 12px; }
       .grid2, .grid3 { grid-template-columns: 1fr; }
-      .header, .main { padding-left: 20px; padding-right: 20px; }
+      .header-top, .main { padding-left: 20px; padding-right: 20px; }
       .header-left { gap: 10px; }
       .header-right .badge { display: none; }
     }
@@ -254,15 +255,31 @@
     .scroll-top:hover { color: var(--text); border-color: var(--text2); box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
 
     /* PRINT BUTTON */
-    .print-btn { position: fixed; bottom: 24px; right: 24px; background: var(--green-600); color: #fff; border: none; border-radius: 8px; padding: 10px 18px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; box-shadow: 0 2px 8px rgba(0,0,0,0.15); z-index: 5; }
+    .print-btn { position: fixed; bottom: 24px; right: 24px; background: #2d5e0e; color: #fff; border: none; border-radius: 8px; padding: 10px 18px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; box-shadow: 0 2px 8px rgba(0,0,0,0.15); z-index: 5; }
     .print-btn:hover { opacity: 0.9; }
 
     /* PRINT */
+    @page { margin: 2cm; @top-center { content: "Employee Lifecycle Governance - BFI Focus Departments"; font-size: 10px; color: #666; } @bottom-left { content: "On-boarding & Off-boarding Process"; font-size: 9px; color: #666; } @bottom-right { content: counter(page); font-size: 9px; color: #666; } }
     @media print {
       .print-btn, .scroll-top, .nav-scroll, .card-section, .theme-toggle, .header-logo { display: none; }
-      .section { display: block !important; }
+      .section { display: block !important; page-break-before: always; }
+      .section:first-of-type { page-break-before: avoid; }
+      #checklists .card { page-break-before: always; }
+      #checklists .card:first-of-type { page-break-before: auto; }
+      #handoff .card + .card { page-break-before: always; }
+      #controls .cp:first-of-type { page-break-before: auto; }
+      .print-page-break { page-break-before: always; }
       body { background: white; }
-      .header { position: static; border-bottom: 0.5px solid #ccc; padding: 20px 0; }
+      .table-wrap { overflow: visible; width: 100%; }
+      p, li, .step-text, .flow-desc, .flow-sub, .tl-item, .cp-body p, .cp-body h4, .card, .checklist li, .glossary dt, .glossary dd, .owner, .critical-text, .phase-card p { orphans: 3; widows: 3; }
+      body { font-size: 14px; }
+      .step-text, .flow-desc, .cp-body p, .cp-body h4, .tl-item, .checklist li, .glossary dd, .critical-text, .section-sub { font-size: 13px; }
+      .card-title, .flow-dept, .step-tag, .check-meta, .form-field label, .sign-field label, .tl-sla, .badge, .dept-tag, .raci-pill, .flow-sub, .section-title { font-size: 11px; }
+      .matrix-table, .raci-table { min-width: 0; width: 100%; font-size: 10px; }
+      .matrix-table th, .matrix-table td, .raci-table th, .raci-table td { padding: 6px 8px; white-space: normal; word-break: break-word; }
+      .dept-tag, .raci-pill { font-size: 9px; padding: 1px 5px; }
+      .header { position: static !important; border-bottom: none; }
+      .header-top { padding: 20px 0 0; }
       .header-text h1 { font-size: 18px; }
       .header-text p { font-size: 11px; color: #555; }
     }
@@ -278,30 +295,31 @@
 <body>
 
 <header class="header">
-  <div class="header-left">
-    <img class="header-logo" src="Page04-BFILogo.png" alt="BFI" width="150" height="150" onerror="this.style.display='none'">
-    <div class="header-text">
-      <h1>Employee Lifecycle Governance</h1>
-      <p>Prepared by: HSSE Department/OSS Section — Brunei Fertilizer Industries (BFI)</p>
+  <div class="header-top">
+    <div class="header-left">
+      <img class="header-logo" src="Page04-BFILogo.png" alt="BFI" width="150" height="150" onerror="this.style.display='none'">
+      <div class="header-text">
+        <h1>Employee Lifecycle Governance</h1>
+        <p>Prepared by: HSSE Department/OSS Section — Brunei Fertilizer Industries (BFI)</p>
+      </div>
+    </div>
+    <div class="header-right">
+      <button class="theme-toggle" id="themeToggle" type="button" title="Switch theme">☀️ System</button>
+      <div class="badge"><span class="dot"></span> Internal Use Only</div>
     </div>
   </div>
-  <div class="header-right">
-    <button class="theme-toggle" id="themeToggle" type="button" title="Switch theme">☀️ System</button>
-    <div class="badge"><span class="dot"></span> Internal Use Only</div>
+  <div class="nav-scroll">
+    <div class="nav">
+      <button class="active" type="button" onclick="show('overview', this)">Overview</button>
+      <button type="button" onclick="show('onboarding', this)">On-boarding Process</button>
+      <button type="button" onclick="show('offboarding', this)">Off-boarding Process</button>
+      <button type="button" onclick="show('handoff', this)">Hand-off Matrix</button>
+      <button type="button" onclick="show('controls', this)">Critical Controls</button>
+      <button type="button" onclick="show('checklists', this)">Checklists &amp; Forms</button>
+      <button type="button" onclick="show('raci', this)">RACI Summary</button>
+    </div>
   </div>
 </header>
-
-<div class="nav-scroll">
-  <div class="nav">
-    <button class="active" type="button" onclick="show('overview', this)">Overview</button>
-    <button type="button" onclick="show('onboarding', this)">On-boarding Process</button>
-    <button type="button" onclick="show('offboarding', this)">Off-boarding Process</button>
-    <button type="button" onclick="show('handoff', this)">Hand-off Matrix</button>
-    <button type="button" onclick="show('controls', this)">Critical Controls</button>
-    <button type="button" onclick="show('checklists', this)">Checklists &amp; Forms</button>
-    <button type="button" onclick="show('raci', this)">RACI Summary</button>
-  </div>
-</div>
 
 <div class="card-section">
   <div class="card-3d">
@@ -832,6 +850,8 @@
       </div>
     </div>
 
+    <div class="print-page-break"></div>
+
     <p style="font-size:13px;font-weight:600;color:var(--coral-600);margin:28px 0 12px;text-transform:uppercase;letter-spacing:0.5px">Off-boarding Controls</p>
 
     <div class="critical">
@@ -1089,6 +1109,8 @@
       </div>
     </div>
 
+    <div class="print-page-break"></div>
+
     <div class="card">
       <div class="card-title">Off-boarding Activities</div>
       <div class="table-wrap">
@@ -1216,16 +1238,6 @@
   });
   var themeBtn = document.getElementById('themeToggle');
   if (themeBtn) themeBtn.onclick = cycleTheme;
-
-  function updateNavSticky() {
-    var header = document.querySelector('.header');
-    var nav = document.querySelector('.nav-scroll');
-    if (header && nav) {
-      nav.style.top = header.offsetHeight + 'px';
-    }
-  }
-  window.addEventListener('load', updateNavSticky);
-  window.addEventListener('resize', updateNavSticky);
 
   var scrollBtn = document.getElementById('scrollTop');
   var scrollThreshold = 300;
