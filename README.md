@@ -1,21 +1,3 @@
-<<<<<<< HEAD
-# Employee Lifecycle Governance
-
-This repository contains documentation and resources related to employee lifecycle processes, including onboarding and offboarding workflows.
-
-## 📂 Contents
-- **Employee Lifecycle Governance.md** — Governance guidelines for managing employee lifecycle.
-- **On-boarding & Off-boarding.md** — Documentation of onboarding and offboarding procedures.
-- **Updated On-boarding__Off-boarding.md** — Revised version of onboarding/offboarding documentation.
-- **[Claude] employee_lifecycle.html** — HTML resource for employee lifecycle visualization.
-- **employee-lifecycle_jsx.pdf** — PDF reference for JSX-based lifecycle documentation.
-
-## 🚀 Getting Started
-Clone the repository:
-```bash
-git clone https://github.com/wafisupri/ws321bcb.git
-cd ws321bcb
-=======
 # IDBadge – BFI Access Card Project
 
 ## 📌 Overview
@@ -40,27 +22,43 @@ The project includes multiple AI-assisted versions & design iterations, generate
 
 ## 📁 Project Structure
 
-```
 IDBadge/
+
 │
+
 ├── BFI Access Cards 2025_BFI & BRE Employee.pdf
+
 ├── Page01–Page04 assets (PDF/JPG)
+
 │
+
 ├── [ChatGPT] BFI Access Card Landing Page.html
+
 ├── [Copilot] BFI Access Card Landing Page.html
+
 ├── [Gemini] BFI Access Card Landing Page.html
+
 ├── [DeepSeek] BFI Access Card Landing Page.html
+
 ├── [Meta] BFI Access Card Landing Page.html
+
 │
+
 ├── [Kimi] OKComputer_Untitled_Chat/
+
 │   ├── app/
+
 │   │   ├── src/
+
 │   │   ├── components/
+
 │   │   ├── pages/
+
 │   │   └── assets/
+
 │
+
 └── tech-spec.md
-```
 
 ---
 
@@ -73,10 +71,7 @@ You can directly open any `.html` file in a browser to preview different AI-gene
 ### 2. React App (Kimi version)
 
 Inside:
-
-```
 [Kimi] OKComputer_Untitled_Chat/app
-```
 
 Run:
 
@@ -128,4 +123,3 @@ Negara Brunei Darussalam
 
 * This project is experimental & includes multiple AI-generated outputs.
 * Designed for testing UI consistency & automation ideas.
->>>>>>> f9fac6c2c1fcf863995f50eb435743beee821535
